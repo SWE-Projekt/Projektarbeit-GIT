@@ -1,13 +1,15 @@
+%---Include Befehle-------------------------------------------------------------------
 \documentclass[a4paper]{article}
 \usepackage{ngerman, amsmath, amssymb, bbm, array, tabularx}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc} % Kodierung
-\usepackage[ngerman]{babel} % Sprache
-\usepackage{textcomp}       % Zusätzliche Symbolzeichen 
+\usepackage[utf8]{inputenc} 		% Kodierung
+\usepackage[ngerman]{babel} 		% Sprache
+\usepackage{textcomp}       		% Zusätzliche Symbolzeichen 
 \setlength{\parskip}{1.5ex plus0.5ex minus0.2ex} 
 \setlength{\parindent}{0cm}
-\usepackage[]{graphicx}   	%initialisierung von Graphiken?
-\usepackage{xcolor}			%init von Farbe?
+\usepackage[]{graphicx}   			% initialisierung von Graphiken
+\usepackage{xcolor}					% init von Farbe
+
 %---Seitenränder einstellen-----------------------------------------------------------
 \usepackage[left=30mm,right=25mm,top=25mm,bottom=25mm]{geometry}
 
@@ -15,14 +17,13 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-
-\lhead{{\footnotesize HTW Berlin}} %linke Seite Kopfzeile, Größe wie eine Fußnote
-\chead{} %Mitte Kopf - leer
-\rhead{{\footnotesize SWE - Belegarbeit GIT}} % rechte Seite Kopfzeile
+\lhead{{\footnotesize HTW Berlin}} 				% linke Seite Kopfzeile, Größe wie eine Fußnote
+\chead{} 										% Mitte Kopf - leer
+\rhead{{\footnotesize SWE - Belegarbeit GIT}} 	% rechte Seite Kopfzeile
 \lfoot{{\footnotesize F. Goerge, S. Ede,\\ R. Peters, J. Meise}} %linke Seite Fußnote
-\cfoot{} % Mitte Fußnote leer
-\rfoot{\thepage} %Rechte Fußnote Seitenzahl
-\renewcommand{\headrulewidth}{0.2pt}    %Größe Kopf/Fußzeile?
+\cfoot{} 										% Mitte Fußnote leer
+\rfoot{\thepage} 								% Rechte Fußnote Seitenzahl
+\renewcommand{\headrulewidth}{0.2pt}    		% Größe Kopf/Fußzeile?
 \renewcommand{\footrulewidth}{0.2pt}
 
 %---Glossar---------------------------------------------------------------------------
@@ -49,20 +50,20 @@
 
 %---Deckblatt-------------------------------------------------------------------------
 \title{\textbf{{\Huge { Belegarbeit GIT \vspace{2cm}} 
-\includegraphics[width=\textwidth]{git-logo.png} %einfügen von Bildern
+\includegraphics[width=\textwidth]{git-logo.png}	% einfügen von Bildern
 \vspace{2cm} }}}
 \author{Fabian Goerge \\  Sami Ede  \\ Richard Peters \\ Jens Meise}
 \date{\today}
 \maketitle
-\thispagestyle{empty} %Keine Seitenzahl auf dem Deckblatt 
+\thispagestyle{empty} 								% Keine Seitenzahl auf dem Deckblatt 
 
 %------------------------------------------------------------------------------------
 
 \newpage
 
 %---Inhaltsverzeichnis wird erzeugt--------------------------------------------------
-\setcounter{page}{1} %Inhaltsverzeichnis startet mit der Seitenzahl 1 
-\tableofcontents	 %Inhaltsverzeichnis wird erzeugt
+\setcounter{page}{1} 								% Inhaltsverzeichnis startet mit der Seitenzahl 1 
+\tableofcontents									% Inhaltsverzeichnis wird erzeugt
 
 %------------------------------------------------------------------------------------
 
@@ -76,14 +77,14 @@
 	- Präsentation fertigstellen (16.12. / 22.12.)
 }
 %---Erster Punkt--------------------------------------------------------------------
-\section{\underline{Einführung und Ziel der Arbeit}} %Section erstellt automatisch den jeweiligen Punkt. Das erste Section erstellt Punkt 1, das 2te Punkt 1 etc.
+\section{\underline{Einführung und Ziel der Arbeit}} 	% Section erstellt automatisch den jeweiligen Punkt. Das erste Section erstellt Punkt 1, das 2te Punkt 1 etc.
 
-\subsection{Einführung} %Subsection erstellt automatisch Unterpunkte
+\subsection{Einführung} 								% Subsection erstellt automatisch Unterpunkte
 
 %Beispiel für einen Glossar Eintrag....der oben noch definiert werden muss!
-...mit einem \gls{merge} kann man .....    %gls = glossary entry; in den Klammern der vordefinierte Glossareintrag
+...mit einem \gls{merge} kann man .....    				% gls = glossary entry; in den Klammern der vordefinierte Glossareintrag
 
-	\textbf{Sami ab hier gehts los...} %textbigfat ;D
+	\textbf{Sami ab hier gehts los...} 					% textbigfat
 Was ist Git? Git ist ein Versionsverwaltungssystem. 	
 Der Gedanke von Git ist das sich Daten im Laufe der Zeit ändern und Git bietet die Möglichkeit
 diese Änderungen zu Verwalten und festzuhalten. (Wer hat wann was und warum geändert?)
@@ -91,12 +92,12 @@ diese Änderungen zu Verwalten und festzuhalten. (Wer hat wann was und warum ge�
 \subsection{Ziel}
 	Sami...
 	Git modellieren, mit den Modellierungsarten auseinandersetzen	
-\newpage	%Seitenumbruch
+\newpage												% Seitenumbruch
 \section{\underline{Textuelle Beschreibung}}
 
 Git ist eine freie Software zur verteilten Versionsverwaltung von Dateien. Git hilft, wenn mehrere Programmierer an einem Projekt arbeiten, indem es verschiedene Features vereint:
 
-  \begin{itemize} %Aufzählungen
+  \begin{itemize} 										% Aufzählungen
      
 \item Git ermöglicht eine nicht-lineare Entwicklung; das heißt, es ist möglich, an verschiedenen „Positionen“ des Quelltextes zu arbeiten, und diese im Nachhinein automatisch zu vereinen („mergen“). %Jeder Backslash ist ein Bulletpoint
 \item des Weiteren bietet Git die Möglichkeit eines lokalen Arbeitens. Jeder User besitzt eine lokale Kopie des kompletten Repositories (inklusive der Versionsgeschichte), so dass auch ohne Anbindung in ein Netzwerk gearbeitet werden kann. Dies ermöglicht sehr schnelles Arbeiten!
@@ -104,7 +105,7 @@ Dies bedeutet auch gleichzeitig Multi-Backups! Jeder User speichert die komplett
 \item Mehrere Möglichkeiten, Repositories abzugleichen; Git besitzt ein eigenes Protokoll, und unterstützt unteranderem http, https, ftp und rsync Übertragungen.
 \item Versionsgeschichte wird kryptografisch gesichert, so dass es nicht möglich ist, Änderungen an der Versionsgeschichte vorzunehmen, ohne dass sich der Name der Revision ändert.
 
-    \end{itemize} %Aufzählung beendet
+    \end{itemize} 										% Aufzählung beendet
 
 Des Weiteren bietet Git ein Webinterface.
 
@@ -114,8 +115,8 @@ Des Weiteren bietet Git ein Webinterface.
 
 \includegraphics[width=\textwidth]{Use-Case-Modell.png}	
 
-Dieses Use-Cases repräsentieren die Interaktion zwischen dem Programmierer (\textit{Aktor}) und dem Git-System (\textit{Subjekt})\\  %Textit = Textitalian = kursiv
-\\ % Absatz
+Dieses Use-Cases repräsentieren die Interaktion zwischen dem Programmierer (\textit{Aktor}) und dem Git-System (\textit{Subjekt})\\  							% Textit = Textitalian = kursiv
+\\ 														% Absatz
 Der Programmierer benutzt das Git-System um ein bestimmtes Ziel zu erreichen. 
 Der Git-Server (\textit{Sekundäre Aktor}) wird von dem Git-System genutzt um eine Auswahl von Befehlen ausführen zu können.\\
 \\
@@ -125,6 +126,7 @@ Der Admin erbt alle Fähigkeiten von dem Programmierer. Demnach kann der Admin a
 Im Use-Case sind die Möglichkeiten, Verwalte \gls{Repository}, Verwalte Rechte, \gls{Klone} Reopisitory, Bearbeite Quellecode, Erstelle \gls{Branch}, \gls{merge} Branch und \gls{Switch} Branch aufgeführt. \\
 \\
 Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien. 
+
 \newpage	
 \subsubsection{Use-Case-Szenarien (Storys)}
 
