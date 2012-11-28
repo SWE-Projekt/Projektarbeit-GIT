@@ -1,4 +1,0 @@
-Projektarbeit-GIT
-=================
-
-Projektarbeit GIT 
