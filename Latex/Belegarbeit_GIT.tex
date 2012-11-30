@@ -82,15 +82,22 @@
 \subsection{Einführung} 								% Subsection erstellt automatisch Unterpunkte
 
 %Beispiel für einen Glossar Eintrag....der oben noch definiert werden muss!
-...mit einem \gls{merge} kann man .....    				% gls = glossary entry; in den Klammern der vordefinierte Glossareintrag
+%"...mit einem \gls{merge} kann man" gls = glossary entry; in den Klammern der vordefinierte Glossareintrag
 
-	\textbf{Sami ab hier gehts los...} 					% textbigfat
-Was ist Git? Git ist ein Versionsverwaltungssystem. 	
-Der Gedanke von Git ist das sich Daten im Laufe der Zeit ändern und Git bietet die Möglichkeit
-diese Änderungen zu Verwalten und festzuhalten. (Wer hat wann was und warum geändert?)
+	% textbigfat
+Git ist ein freies Versionsverwaltungssystem, dass von Linus Torvald entwickelt wurde.
+(Das zu der Zeit existierende Versionsverwaltungssystem BitKeeper war aus Lizenzgründen nicht mehr für das Linuxentwicklerteam zugänglich, und so entschied sich Torvald dafür, ein eigenes System zu schreiben.) \\
+Ein Versionsverwaltungssystem verfolgt Änderungen in Dokumenten oder Dateien und speichert die durch die Änderungen entstehenden Versionen in einem Verzeichnis so ab, dass sie mit einem Zeitstempel und einer Benuzerkennung versehen werden und später wieder hergestellt werden können. Git bietet weiterhin die Möglichkeit sich eigene \gls{Branch}es zu erstellen, so dass man unabhängig vom "Hauptstrang" arbeiten kann, um so zum Beispiel Portierungen einer Applikation auf andere Betriebssysteme zu entwickeln. \\
+Git speichert außerdem alle Dateien lokal, so dass auch ohne Internetverbindung gearbeitet werden kann, die Zusammenführung (\gls{merge}) der Branches muss dann zu einem späteren Zeitpunkt stattfinden. Jeder Benutzer verfügt also über eine komplette Kopie des \gls{Repository}. \\
+Die Speicherung der Versionsgeschichte erfolgt so, dass der Name einer beliebigen Revision auf der vollständigen Geschichte basiert, die zu dieser Version geführt hat, so dass es nicht möglich ist, die Versionsgeschichte nachträglich zu ändern. Diese Funktion ermöglicht auch, bestimmte Versionen gesondert digital zu signieren, um z.B. den Zustand zum Zeitpunkt des Erscheinens einer neuen Version besonders zu kennzeichnen. \\
+Ein weiterer Vorteil von Git ist zudem eine große Vielfalt von Möglichkeiten zum Austausch zwischen Repositories; Git unterstützt eine Vielzahl von Protokollen zum Dateiaustausch, darunter auch ein eigenes, sehr effizientes (git://).\\
+
 
 \subsection{Ziel}
-	Git modellieren, mit den Modellierungsarten auseinandersetzen	
+	Das Ziel dieses Projektes, ist die Modellierung von Git, die Darstellung und Rekonstruktion einer Software über Diagramme, sowie die Auseinandersetzung mit den verschiedenen Modellierungsarten. \\
+	Dafür werden wir uns zunächst mit einem Use-Case-Modell beschäftigen und dieses anschließend in einigen Use-Case-Szenarien elaborieren. \\
+	Außerdem wird ein Domänenmodell dargestellt, sowie einige ausgewählte Zustandsdiagramme.\\
+	Abschließend erläutern wir einige Erfahrungen aus der Teamarbeit und eine Schlussbetrachtung.
 \newpage												% Seitenumbruch
 \section{\underline{Textuelle Beschreibung}}
 
@@ -106,7 +113,7 @@ Dies bedeutet auch gleichzeitig Multi-Backups! Jeder User speichert die komplett
 
     \end{itemize} 										% Aufzählung beendet
 
-Des Weiteren bietet Git ein Webinterface.
+Desweiteren bietet Git ein Webinterface.
 
 \section{\underline{Modellierung}}
 
