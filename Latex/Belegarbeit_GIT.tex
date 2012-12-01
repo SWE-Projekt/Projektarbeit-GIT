@@ -43,7 +43,7 @@
 \newglossaryentry{Switch}		{name=Switch	,description={engl. wechseln}}
 \newglossaryentry{Pull}			{name=Pull		,description={engl. ziehen. Lädt Objekte und Branches. Lädt somit alle Änderungen}}
 \newglossaryentry{fetch}		{name=Fetch		,description={engl. holen, holt Brachnes von fernen? Repositories}}
-\newglossaryentry{Commit}		{name=Commit	,description={engl. wechseln}}
+\newglossaryentry{Commit}		{name=Commit	,description={engl. übergeben - Mit diesem Befehl werden lokale Änderungen im lokalen Repository gespeichert. }}
 %-------------------------------------------------------------------------------------
 
 \begin{document}
@@ -217,11 +217,38 @@ Repository: Die Projektdaten und Informationen des Git-Systems (History, Branche
 
 	Um das Verhalten eines Programms im laufenden Betrieb zu untersuchen, bedient man sich sogenannter \textbf{Zustandsdiagramme} \\
 	Zustandsdiagramme bieten ein geeignetes Vokabular um das Ein- und Ausgabeverhalten eines Programms kompakt und präzise zu beschreiben.
-	Da die Lebenszyklen der Objekte in Git komplex sind wurde hier ausgewählte Zustandsdiagramme dargestellt.
- (Quelltext bearbeiten, Branches mergen) (Sami, Fabian)
+	Da die Lebenszyklen der Objekte in Git komplex sind wurde hier ausgewählte Zustandsdiagramme dargestellt. \\
+
+\underline{\textbf{\textsc{Push und Commit}}} \\
+\includegraphics[width=\textwidth]{PuCo.jpg}\\\\
+Die Möglichkeit zu commiten gibt es nur, wenn Änderungen vorliegen. Ansonsten wird eine Fehlermeldung ausgegeben, die den Nutzer darauf aufmerksam macht, dass es nichts zu commiten gibt.
+Wurden Dateien oder Dokumente verändert, wird im SmartGit Fenster angezeigt, welche Dateien verändert wurden.\\
+Der Nutzer hat in jedem Zustand die Möglichkeit, den Push-Button zu betätigen, allerdings mit unterschiedlichem Effekt:\\
+Wurden die Änderungen noch nicht committed werden sie auch nicht auf den Server übertragen.
+Es gibt nun den Fall, dass Änderungen vorgenommen und committed wurden, ohne das sie gepusht wurden.
+Wenn der Nutzer nun weitere Änderung vornimmt, hat er die Möglichkeit die vorhergegangenen Änderungen auf den Server zu pushen, ohne dass die aktuellen Änderungen mit übernommen werden. 
+\newpage	
+\underline{\textbf{\textsc{Anmeldung (=Clone Repository)}}}\\
+\includegraphics[width=\textwidth]{Clone.jpg}\\\\
+Zu Beginn eines Projektes muss der Anwender ein Repository zu seinem Projekt hinzufügen.
+Dafür benötigt er die genau Web-Adresse eines bereits existierenden Repositorys. Diese wird dann vom System validiert. Bei Falscher Eingabe gibt es eine Fehlermeldung und der Nutzer gelangt zurück in das Abfragemenü.
+Bei erfolgreicher Anmeldung wird das Repository lokal auf dem Computer gespeichert. \\\\
+\underline{\textbf{\textsc{Pull}}}\\
+\includegraphics[width=\textwidth]{Pull.jpg}\\\\
+Zu jedem vom Nutzer gewählten Zeitraum hat er die Möglichkeit, sein lokales Repository mit dem externen Repository abzugleichen. \\
+Dafür wählt er die Option Pull, die alle seit dem letzten Abgleich veränderten Daten übernimmt.
+Ein Konflikt tritt auf, wenn Änderungen an der gleichen Stelle vorgenommen wurden.
+Der Nutzer muss dann den Konflikt lösen in dem er dem Programm sagt welche Änderung übernommen werden soll.
 
 \newpage	
+\underline{\textbf{\textsc{Merge}}}\\
 
+Hallo Freunde, sollen wir es tun?
+
+\underline{\textbf{\textsc{Branch}}}\\
+
+
+\newpage	
 %---Glossar als subsection und "Glossar" einfügen------------------------------------------
 \setglossarysection{subsection}
 \printglossary[title={Glossar}, numberedsection]
