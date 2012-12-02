@@ -38,12 +38,15 @@
 
 \newglossaryentry{merge}		{name=Merge		,description={engl. zusammenführen, Vereinigung von Branches}}
 \newglossaryentry{Repository}	{name=Repository,description={dt. Lager, Depot, Repositorium. enthält die Geschichte eines Projekts. Jeder Nutzer hat ein eigenes Repository mit der gesamten Geschichte}}
-\newglossaryentry{Klone} 		{name=Klone		,description={engl. kopieren}}
+\newglossaryentry{Clone} 		{name=Clone		,description={engl. kopieren}}
 \newglossaryentry{Branch}		{name=Branch	,description={engl. Zweig. Ein Entwicklungszweig in der Geschichte}}
 \newglossaryentry{Switch}		{name=Switch	,description={engl. wechseln}}
 \newglossaryentry{Pull}			{name=Pull		,description={engl. ziehen. Lädt Objekte und Branches. Lädt somit alle Änderungen}}
 \newglossaryentry{fetch}		{name=Fetch		,description={engl. holen, holt Brachnes von fernen? Repositories}}
 \newglossaryentry{Commit}		{name=Commit	,description={engl. übergeben - Mit diesem Befehl werden lokale Änderungen im lokalen Repository gespeichert. }}
+\newglossaryentry{Pointer}		{name=Pointer	,description={engl. Zeiger, Verweis auf ein existierendes Objekt}}
+\newglossaryentry{Changeset}		{name=Changeset	,description={mehrere Änderungen zu einer Einheit zusammengefasst}}
+\newglossaryentry{Head}		{name=Head	,description={engl. Kopf, Verweis auf die aktuelle Änderung. Neue Änderungen werden hinter dem Head gespeichert.}}
 %-------------------------------------------------------------------------------------
 
 \begin{document}
@@ -108,12 +111,12 @@ Git ist eine freie Software zur verteilten Versionsverwaltung von Dateien. Git h
 \item Git ermöglicht eine nicht-lineare Entwicklung; das heißt, es ist möglich, an verschiedenen „Positionen“ des Quelltextes zu arbeiten, und diese im Nachhinein automatisch zu vereinen („mergen“). %Jeder Backslash ist ein Bulletpoint
 \item des Weiteren bietet Git die Möglichkeit eines lokalen Arbeitens. Jeder User besitzt eine lokale Kopie des kompletten Repositories (inklusive der Versionsgeschichte), so dass auch ohne Anbindung in ein Netzwerk gearbeitet werden kann. Dies ermöglicht sehr schnelles Arbeiten!
 Dies bedeutet auch gleichzeitig Multi-Backups! Jeder User speichert die komplette Versionsgeschichte!
-\item Mehrere Möglichkeiten, Repositories abzugleichen; Git besitzt ein eigenes Protokoll, und unterstützt unteranderem http, https, ftp und rsync Übertragungen.
+\item Mehrere Möglichkeiten, Repositories abzugleichen; Git besitzt ein eigenes Protokoll, und unterstützt unter anderem http, https, ftp und rsync Übertragungen.
 \item Versionsgeschichte wird kryptografisch gesichert, so dass es nicht möglich ist, Änderungen an der Versionsgeschichte vorzunehmen, ohne dass sich der Name der Revision ändert.
 
     \end{itemize} 										% Aufzählung beendet
 
-Desweiteren bietet Git ein Webinterface.
+Außerdem bietet Git ein Webinterface.
 
 \section{\underline{Modellierung}}
 
@@ -129,7 +132,7 @@ Der Git-Server (\textit{Sekundäre Aktor}) wird von dem Git-System genutzt um ei
 Der Programmierer repräsentiert eine Personengruppe. An einem Projekt können beliebig viele Programmierer beteiligt seien.  
 Der Admin erbt alle Fähigkeiten von dem Programmierer. Demnach kann der Admin auch alle anderen Interaktionen ausüben.  \\
 \\
-Im Use-Case sind die Möglichkeiten, Verwalte \gls{Repository}, Verwalte Rechte, \gls{Klone} Reopisitory, Bearbeite Quellecode, Erstelle \gls{Branch}, \gls{merge} Branch und \gls{Switch} Branch aufgeführt. \\
+Im Use-Case sind die Möglichkeiten, Verwalte \gls{Repository}, Verwalte Rechte, \gls{Clone} Reopisitory, Bearbeite Quellecode, Erstelle \gls{Branch}, \gls{merge} Branch und \gls{Switch} Branch aufgeführt. \\
 \\
 Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien. 
 
@@ -211,7 +214,11 @@ Repository: Die Projektdaten und Informationen des Git-Systems (History, Branche
 \newpage	
 \subsection{Domänenmodell}
 
-	  - Klassendiagramme, Objekte, Verknüpfungen, Abhängigkeiten (Jens, Richard)
+\includegraphics[width=\textwidth]{Domaenenmodell.jpg}\\
+Die Abbildung stellt das Domänenmodell der Software GIT dar.\\\\
+
+Das \gls{Repository} ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe Clone Repository - Zustandsdiagramm). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele Changesets. Jeder Branch enthält einen \gls{Pointer} (\gls{Head}) welcher auf das letzte in diesem \gls{Branch} erzeugte \gls{Changeset} zeigt. Die Changesets zeigen mittels eines Pointers auf das jeweilige Changeset welches zuvor erzeugt wurde. Durch diese listenartige Verkettung entsteht die History. Durch die Verschiebung des Heads besteht die Möglichkeit vorgenommene Änderungen wieder rückgängig zu machen. Jedes Changeset beinhaltet mindestens eine Modifikation. Eine Modifikation ist eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. 
+
 \newpage		
 \subsection{Ausgewählte Zustandsdiagramme}
 
@@ -221,6 +228,7 @@ Repository: Die Projektdaten und Informationen des Git-Systems (History, Branche
 
 \underline{\textbf{\textsc{Push und Commit}}} \\
 \includegraphics[width=\textwidth]{PuCo.jpg}\\\\
+\textbf{Anmerkung:} Revert / Änderung wurden Rückgängig gemacht --> Pfeil von "Anzeige Änderung.." nach "Verzeichnis ist unverändert"\\\\
 Die Möglichkeit zu commiten gibt es nur, wenn Änderungen vorliegen. Ansonsten wird eine Fehlermeldung ausgegeben, die den Nutzer darauf aufmerksam macht, dass es nichts zu commiten gibt.
 Wurden Dateien oder Dokumente verändert, wird im SmartGit Fenster angezeigt, welche Dateien verändert wurden.\\
 Der Nutzer hat in jedem Zustand die Möglichkeit, den Push-Button zu betätigen, allerdings mit unterschiedlichem Effekt:\\
@@ -228,13 +236,16 @@ Wurden die Änderungen noch nicht committed werden sie auch nicht auf den Server
 Es gibt nun den Fall, dass Änderungen vorgenommen und committed wurden, ohne das sie gepusht wurden.
 Wenn der Nutzer nun weitere Änderung vornimmt, hat er die Möglichkeit die vorhergegangenen Änderungen auf den Server zu pushen, ohne dass die aktuellen Änderungen mit übernommen werden. 
 \newpage	
-\underline{\textbf{\textsc{Anmeldung (=Clone Repository)}}}\\
+\underline{\textbf{\textsc{Clone Repository}}}\\
 \includegraphics[width=\textwidth]{Clone.jpg}\\\\
-Zu Beginn eines Projektes muss der Anwender ein Repository zu seinem Projekt hinzufügen.
+Zu Beginn eines Projektes kann der Anwender ein existierendes Repository zu seinem Projekt hinzufügen.
 Dafür benötigt er die genau Web-Adresse eines bereits existierenden Repositorys. Diese wird dann vom System validiert. Bei Falscher Eingabe gibt es eine Fehlermeldung und der Nutzer gelangt zurück in das Abfragemenü.
 Bei erfolgreicher Anmeldung wird das Repository lokal auf dem Computer gespeichert. \\\\
+Alternative kann auch ein lokales leeres Repository initialisiert werden.\\
 \underline{\textbf{\textsc{Pull}}}\\
 \includegraphics[width=\textwidth]{Pull.jpg}\\\\
+--> \textbf{Anmerkung:} "löse Konflikt" sollte " Konflikt gelöst" heißen.\\\\
+Vom Nutzer gewählter Zeitpunkt" vielleicht besser "Pullstartvorgang"
 Zu jedem vom Nutzer gewählten Zeitraum hat er die Möglichkeit, sein lokales Repository mit dem externen Repository abzugleichen. \\
 Dafür wählt er die Option Pull, die alle seit dem letzten Abgleich veränderten Daten übernimmt.
 Ein Konflikt tritt auf, wenn Änderungen an der gleichen Stelle vorgenommen wurden.
@@ -254,7 +265,7 @@ Hallo Freunde, sollen wir es tun?
 \printglossary[title={Glossar}, numberedsection]
 
 %------------------------------------------------------------------------------------------
-	 - Fachwörter werden erklärt (Repository, Branch, bla...) (Gemeinsam im Laufe der Latexerstellung) 
+
 \newpage		
 \section{\underline{Erfahrung aus der Teamarbeit}}
 
@@ -265,7 +276,6 @@ Hallo Freunde, sollen wir es tun?
 	
 	Zusammenfassend kann man sagen das hier noch nicht so viel passiert ist ;)	
 	(Gemeinsam)
-	.ignore test!
 	
 \end{document}
 
