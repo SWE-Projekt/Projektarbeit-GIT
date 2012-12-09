@@ -9,6 +9,7 @@
 \setlength{\parindent}{0cm}
 \usepackage[]{graphicx}   			% initialisierung von Graphiken
 \usepackage{xcolor}					% init von Farbe
+\usepackage{tabularx}				% verbesserte Tabs
 
 %---Seitenränder einstellen-----------------------------------------------------------
 \usepackage[left=30mm,right=25mm,top=25mm,bottom=25mm]{geometry}
@@ -41,9 +42,9 @@
 \newglossaryentry{Clone} 		{name=Clone		,description={engl. kopieren}}
 \newglossaryentry{Branch}		{name=Branch	,description={engl. Zweig. Ein Entwicklungszweig in der Geschichte}}
 \newglossaryentry{Switch}		{name=Switch	,description={engl. wechseln}}
-\newglossaryentry{Pull}			{name=Pull		,description={engl. ziehen. Lädt Objekte und Branches. Lädt somit alle Änderungen}}
-\newglossaryentry{fetch}		{name=Fetch		,description={engl. holen, holt Brachnes von fernen? Repositories}}
-\newglossaryentry{Commit}		{name=Commit	,description={engl. übergeben - Mit diesem Befehl werden lokale Änderungen im lokalen Repository gespeichert. }}
+\newglossaryentry{pull}			{name=Pull		,description={engl. ziehen. Lädt Objekte und Branches. Lädt somit alle Änderungen}}
+% \newglossaryentry{fetch}		{name=Fetch		,description={engl. holen, holt Brachnes von fernen? Repositories}} ------> Brauchen Wir das überhaupt ?
+\newglossaryentry{commit}		{name=Commit	,description={engl. übergeben - Mit diesem Befehl werden lokale Änderungen im lokalen Repository gespeichert. }}
 \newglossaryentry{Pointer}		{name=Pointer	,description={engl. Zeiger, Verweis auf ein existierendes Objekt}}
 \newglossaryentry{Changeset}		{name=Changeset	,description={mehrere Änderungen zu einer Einheit zusammengefasst}}
 \newglossaryentry{Head}		{name=Head	,description={engl. Kopf, Verweis auf die aktuelle Änderung. Neue Änderungen werden hinter dem Head gespeichert.}}
@@ -84,10 +85,7 @@
 
 \subsection{Einführung} 								% Subsection erstellt automatisch Unterpunkte
 
-%Beispiel für einen Glossar Eintrag....der oben noch definiert werden muss!
-%"...mit einem \gls{merge} kann man" gls = glossary entry; in den Klammern der vordefinierte Glossareintrag
 
-	% textbigfat
 Git ist ein freies Versionsverwaltungssystem, dass von Linus Torvald entwickelt wurde.
 (Das zu der Zeit existierende Versionsverwaltungssystem BitKeeper war aus Lizenzgründen nicht mehr für das Linuxentwicklerteam zugänglich, und so entschied sich Torvald dafür, ein eigenes System zu schreiben.) \\
 Ein Versionsverwaltungssystem verfolgt Änderungen in Dokumenten oder Dateien und speichert die durch die Änderungen entstehenden Versionen in einem Verzeichnis so ab, dass sie mit einem Zeitstempel und einer Benuzerkennung versehen werden und später wieder hergestellt werden können. Git bietet weiterhin die Möglichkeit sich eigene \gls{Branch}es zu erstellen, so dass man unabhängig vom "Hauptstrang" arbeiten kann, um so zum Beispiel Portierungen einer Applikation auf andere Betriebssysteme zu entwickeln. \\
@@ -132,65 +130,162 @@ Der Git-Server (\textit{Sekundäre Aktor}) wird von dem Git-System genutzt um ei
 Der Programmierer repräsentiert eine Personengruppe. An einem Projekt können beliebig viele Programmierer beteiligt seien.  
 Der Admin erbt alle Fähigkeiten von dem Programmierer. Demnach kann der Admin auch alle anderen Interaktionen ausüben.  \\
 \\
-Im Use-Case sind die Möglichkeiten, Verwalte \gls{Repository}, Verwalte Rechte, \gls{Clone} Reopisitory, Bearbeite Quellecode, Erstelle \gls{Branch}, \gls{merge} Branch und \gls{Switch} Branch aufgeführt. \\
+Im Use-Case sind die Möglichkeiten, Verwalte Repository, Verwalte Rechte, \gls{Clone} Reopisitory, Bearbeite Quellecode, Erstelle Branch, merge Branch und \gls{Switch} Branch aufgeführt. \\
 \\
 Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien. 
 
 \newpage	
 \subsubsection{Use-Case-Szenarien (Storys)}
 
-	- Happy day Szenarien und Optionale Verzweigungen (Abweichungen vom Happy Day) (Richard)
 	
-\textbf{GIT   Use – Case Szenarien}
+\begin{tabularx}{\textwidth}{lX}
+\\
+\textbf{Use Case:} & Clone Repository \\
+\textbf{Kurzbeschreibung:}& Der Programmierer kopiert sämtliche Daten des Repositories auf seinen lokalen Rechner. \\ 
+\textbf{Vorbedingung:} & Ein Repository muss auf dem Server existieren  \\ 
+\textbf{Primärer Aktor:} & Programmierer  \\ 
+\textbf{Nachbedingung:} & Das Repository auf dem Rechner des Programmierers ist mit dem auf dem Server identisch  \\ 
+\textbf{Erfolgsszenario:} & 
+\end{tabularx}
+\\
+\begin{tabularx}{\textwidth}{lX}
+\\
+\qquad 1. & Der Programmierer gibt das Kommando zum Klonen eines Repositories \\
+\qquad 2. & Das System verbindet sich mit dem Server \\
+\qquad 3. & Das System überträgt das Repository vom Server auf den Rechner des Programmierers \\
+\qquad 4. & Das System informiert den Programmierer über den Erfolg der Aktion \\
+\qquad 5. & Das Use Case endet erfolgreich\\\\\hline
+\end{tabularx}
 
-\textbf{Use Case: 			Clone Repository}\\
-Kurzbeschreibung: 	Der Programmierer kopiert sämtliche Daten des Repositories auf seinen lokalen Rechner.\\
-Vorbedingung:	Ein Repository muss auf dem Server existieren\\
-Primärer Aktor:	Programmierer\\
-Nachbedingung:	Das Repository auf dem Rechner des Programmierers ist mit dem auf dem Server identisch\\
-Erfolgsszenario:\\
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Erweiterungen:}\\\\
+\qquad \qquad 2.a. & Die Verbindung zum Server kann nicht hergestellt werden \\
+\qquad \qquad 2.a.1 & Das System informiert den Nutzer \\
+\qquad \qquad 2.a.2 & Das Use Case endet erfolglos \\
 \\
-Der Programmierer gibt das Kommando zum Klonen eines Repositories mit Serveradresse in die Shell ein. Das System verbindet sich mit dem Server. Das System überträgt das Repository vom Server auf den Rechner des Programmierers. Das System informiert den Programmierer über den Erfolg der Aktion. Das Use Case endet erfolgreich.\\
-\\
+\qquad \qquad 3.a. & Die Verbindung bricht während der Übertragung ab \\
+\qquad \qquad 3.a.1 & Das System informiert den Nutzer \\
+\qquad \qquad 3.a.2 & Das Use Case endet erfolglos \\\\
+\end{tabularx}
 
-\textbf{Use Case: 			Quellcode bearbeiten}\\
-Kurzbeschreibung: 	Der Programmierer möchte den Quellcode ändern. Dazu muss er das Repositorie auf den neuesten Stand bringen (‚pull‘), den Quellcode bearbeiten, die Änderungen übernehmen (‚commit‘) und die Änderungen an den Server übertragen (‚Push‘)\\
-Vorbedingung:	Ein Repository muss sich auf dem Rechner und auf dem Server befinden.\\
-Primärer Aktor:	Programmierer\\
-Nachbedingung:	Die Änderungen des Programmierers werden registriert und in die History aufgenommen.\\
-Erfolgsszenario:\\
+\newpage
+
+\begin{tabularx}{\textwidth}{lX}
 \\
-Der Programmierer gibt das Kommando zum Holen von Änderungen in die Shell ein. Das System verbindet sich mit dem Server. Das System vergleicht den lokalen Zustand des Branches mit dem auf dem Server.
-Das System integriert (‚\gls{merge}‘) den Branch auf dem Server in den Branch auf dem Rechner. Das System informiert den Programmierer über den Erfolg der Aktion. Der Programmierer ändert den Quellcode
-Das System verfolgt die Änderungen. Der Programmierer gibt das Kommando zum Übernehmen (‚Commit‘) von Änderungen in die Shell ein mit einer Kurzbeschreibung seiner Änderungen. Das System übernimmt die Änderungen und trägt sie in die History des aktuellen Branches ein. Das System informiert den Programmierer über den Erfolg der Aktion. Der Programmierer gibt das Kommando zum Übertragen der Änderungen (‚Pull‘) auf den Server ein. Das System integriert den aktuellen Branch des Rechners in den entsprechenden Branch auf dem Server (‚\gls{merge}‘) Das System liefert dem Programmierer eine Erfolgsmeldung. Das Use Case endet erfolgreich.\\
+\textbf{Use Case:} &	Quellcode bearbeiten\\
+\textbf{Kurzbeschreibung:} &	Der Programmierer möchte den Quellcode ändern. Dazu muss er das Repositorie auf den neuesten Stand bringen (‚\gls{pull}‘), den Quellcode bearbeiten, die Änderungen übernehmen (‚\gls{commit}‘) und die Änderungen an den Server übertragen (‚Push‘)\\
+\textbf{Vorbedingung:} &	Ein Repository muss sich auf dem Rechner und auf dem Server befinden.\\
+\textbf{Primärer Aktor:} &	Programmierer\\
+\textbf{Nachbedingung:}	& Die Änderungen des Programmierers werden registriert und in die History aufgenommen.\\
+\textbf{Erfolgsszenario:} & 
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
 \\
-\textbf{Use Case: 			Branch erstellen}\\
-Kurzbeschreibung: 	Das System erstellt einen neuen Branch mit dem Zustand des Branches auf dem sich der Programmierer befindet.\\
-Vorbedingung:	Es muss ein Repository existieren.\\
-Primärer Aktor:	Programmierer\\
-Nachbedingung:	Es gibt einen neuen Branch.\\
-Erfolgsszenario:\\
+\qquad 1. & Der Programmierer gibt das Kommando zum Holen von Änderungen (‚Pull‘)\\
+\qquad 2. & Das System verbindet sich mit dem Server\\
+\qquad 3. & Das System vergleicht den lokalen Zustand des Branches mit dem auf dem Server\\
+\qquad 4. & Das System integriert (‚merge‘) den Branch auf dem Server in den Branch auf dem Rechner\\
+\qquad 5. & Das System informiert den Programmierer über den Erfolg der Aktion\\
+\qquad 6. & Der Programmierer ändert den Quellcode\\
+\qquad 7. & Das System verfolgt die Änderungen\\
+\qquad 8. & Der Programmierer gibt das Kommando zum Übernehmen (‚Commit‘) von Änderungen mit einer Kurzbeschreibung seiner Änderungen\\
+\qquad 9. & Das System übernimmt die Änderungen und trägt sie in die History des aktuellen Branches ein\\
+\qquad 10. & Das System informiert den Programmierer über den Erfolg der Aktion\\
+\qquad 11. & Der Programmierer gibt das Kommando zum Übertragen der Änderungen (‚Push‘) auf den Server\\
+\qquad 12. & Das System integriert den aktuellen Branch des Rechners in den entsprechenden Branch auf dem Server (‚merge‘)\\
+\qquad 13. & Das System liefert dem Programmierer eine Erfolgsmeldung\\
+\qquad 14. & Das Use Case endet erfolgreich\\\\\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Erweiterungen:}\\\\
+\qquad \qquad 2.a. & Die Verbindung zum Server kann nicht hergestellt werden \\
+\qquad \qquad 2.a.1 & Das System informiert den Nutzer \\
+\qquad \qquad 2.a.2 & Das Use Case endet erfolglos \\
 \\
-Der Programmierer gibt das Kommando zum Erstellen eines Branches in die Shell ein mit dem Namen des neuen Branches. Das System erzeugt einen neuen Branch. Das Use Case endet erfolgreich.\\
+\qquad \qquad 3.a. & Das System stellt keine Änderungen fest\\
+\qquad \qquad 3.a.1 & Das Use Case endet erfolgreich\\
 \\
-\textbf{Use Case: 			Branch mergen}\\
-Kurzbeschreibung: 	Ein Branch wird in einen anderen Branch integriert\\
-Vorbedingung:	Es müssen 2 Branches existieren.\\
-Primärer Aktor:	Programmierer\\
-Nachbedingung:	Es gibt einen neuen Branch.\\
-Erfolgsszenario:\\
+\qquad \qquad 4.a. & Das System stellt Überschneidungen fest\\
+\qquad \qquad 4.a.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen\\
+\qquad \qquad 4.a.2 & Fortsetzung bei 5.\\
 \\
-Der Programmierer gibt das Kommando zum Mergen eines Branches in die Shell ein mit dem Namen des zu integrierenden Branches. Das System integriert den Branche in den aktiven Branche. Das Use Case endet erfolgreich.\\
+\qquad \qquad 11.a. & Die Verbindung zum Server kann nicht hergestellt werden \\
+\qquad \qquad 11.a.1 & Das System informiert den Nutzer \\
+\qquad \qquad 11.a.2 & Das Use Case endet erfolglos \\
+\end{tabularx}
+
+\newpage
+
+\begin{tabularx}{\textwidth}{lX}
 \\
-\textbf{Use Case: 			Branch switchen}\\
-Kurzbeschreibung: 	Der aktuelle Branch auf dem Rechner wird gewechselt (‚switch‘)\\
-Vorbedingung:	Es müssen mindestens 2 Branches existieren.\\
-Primärer Aktor:	Programmierer\\
-Nachbedingung:	Der aktuelle Branch wurde gewechselt.\\
-Erfolgsszenario:\\
+\textbf{Use Case:} & Branch erstellen\\
+\textbf{Kurzbeschreibung:} & Das System erstellt einen neuen Branch mit dem Zustand des Branches auf dem sich der Programmierer befindet.\\
+\textbf{Vorbedingung:} & Es muss ein Repository existieren.\\
+\textbf{Primärer Aktor:} & Programmierer\\
+\textbf{Nachbedingung:}	& Es gibt einen neuen Branch.\\
+\textbf{Erfolgsszenario:} & 
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
 \\
-Der Programmierer gibt das Kommando zum Wechseln eines Branches (‚switch‘) in die Shell ein mit dem Namen des Zielbranches. Das System wechselt zum Zielbranch.Das Use Case endet erfolgreich.\\
+\qquad 1. & Der Programmierer gibt das Kommando zum Erstellen eines Branches mit dem Namen des neuen Branches\\
+\qquad 2. & Das System erzeugt einen neuen Branch\\
+\qquad 3. & Das Use Case endet erfolgreich.\\\\\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Erweiterungen:}\\\\
+\qquad \qquad 1.a. & Das System stellt fest das dieser Name schon vergeben ist\\
+\qquad \qquad 1.a.1 & Das System fordert den Nutzer auf einen anderen Namen zu wählen\\
+\qquad \qquad 1.a.2 & Der Nutzer gibt einen noch nicht vergebenen Namen ein\\
+\qquad \qquad 1.a.3 & Fortsetzung bei 2.\\\\\hline\hline\\
+\end{tabularx}
+
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Use Case:} & Branch mergen\\
+\textbf{Kurzbeschreibung:} & Ein Branch wird in einen anderen Branch integriert\\
+\textbf{Vorbedingung:} & Es müssen 2 Branches existieren.\\
+\textbf{Primärer Aktor:} & Programmierer\\
+\textbf{Nachbedingung:}	& Es gibt einen neuen Branch.\\
+\textbf{Erfolgsszenario:} &
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
 \\
+\qquad 1. & Der Programmierer gibt das Kommando zum Mergen eines Branches mit dem Namen des zu integrierenden Branches\\
+\qquad 2. & Das System integriert den Branche in den aktiven Branche\\
+\qquad 3. & Das Use Case endet erfolgreich.\\\\\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Erweiterungen:}\\\\
+\qquad \qquad 1.a. & Das System stellt Überschneidungen fest\\
+\qquad \qquad 1.a.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen\\
+\qquad \qquad 1.a.2 & Fortsetzung bei 2.\\\\\hline\hline\\
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Use Case:} & Branch switchen\\
+\textbf{Kurzbeschreibung}: &	Der aktuelle Branch auf dem Rechner wird gewechselt (‚switch‘)\\
+\textbf{Vorbedingung:} & Es müssen mindestens 2 Branches existieren.\\
+\textbf{Primärer Aktor:} & Programmierer\\
+\textbf{Nachbedingung:} & Der aktuelle Branch wurde gewechselt.\\
+\textbf{Erfolgsszenario:} &
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\\
+\qquad 1. & Der Programmierer gibt das Kommando zum Wechseln eines Branches (‚switch‘) mit dem Namen des Zielbranches\\
+\qquad 2. & Das System wechselt zum Zielbranch\\
+\qquad 3. & Das Use Case endet erfolgreich.\\
+\end{tabularx}
+
+\newpage
+%---------------------------------------------------------------------------------------------------------
+%-----------------------Diesen Teil würde ich löschen------------------------------------------------------
 \textbf{Use Case: 			Repository verwalten}\\
 Kurzbeschreibung: 	Ein Repository wird verwaltet.\\
 Vorbedingung:	Keine – es kann auch erst bei der Verwaltung ein Repository angelegt werden.\\
@@ -211,13 +306,15 @@ Der Admin gibt das Kommando zum Verwalten von Rechten in die Shell ein mit dem N
 \\
 
 Repository: Die Projektdaten und Informationen des Git-Systems (History, Branches, etc).
+%--------------------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------------------
 \newpage	
 \subsection{Domänenmodell}
 
 \includegraphics[width=\textwidth]{Domaenenmodell.jpg}\\
 Die Abbildung stellt das Domänenmodell der Software GIT dar.\\\\
 
-Das \gls{Repository} ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe Clone Repository - Zustandsdiagramm). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele Changesets. Jeder Branch enthält einen \gls{Pointer} (\gls{Head}) welcher auf das letzte in diesem \gls{Branch} erzeugte \gls{Changeset} zeigt. Die Changesets zeigen mittels eines Pointers auf das jeweilige Changeset welches zuvor erzeugt wurde. Durch diese listenartige Verkettung entsteht die History. Durch die Verschiebung des Heads besteht die Möglichkeit vorgenommene Änderungen wieder rückgängig zu machen. Jedes Changeset beinhaltet mindestens eine Modifikation. Eine Modifikation ist eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. 
+Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe Clone Repository - Zustandsdiagramm). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele \gls{Changeset}s. Jeder Branch enthält einen \gls{Pointer} (\gls{Head}) welcher auf das letzte in diesem \gls{Branch} erzeugte Changeset zeigt. Die Changesets zeigen mittels eines Pointers auf das jeweilige Changeset welches zuvor erzeugt wurde. Durch diese listenartige Verkettung entsteht die History. Durch die Verschiebung des Heads besteht die Möglichkeit vorgenommene Änderungen wieder rückgängig zu machen. Jedes Changeset beinhaltet mindestens eine Modifikation. Eine Modifikation ist eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. 
 
 \newpage		
 \subsection{Ausgewählte Zustandsdiagramme}
@@ -254,7 +351,7 @@ Der Nutzer muss dann den Konflikt lösen in dem er dem Programm sagt welche Änd
 \newpage	
 \underline{\textbf{\textsc{Merge}}}\\
 
-Hallo Freunde, sollen wir es tun?
+Hallo Freunde, sollen wir es tun? -> definitiv NEIN!
 
 \underline{\textbf{\textsc{Branch}}}\\
 
