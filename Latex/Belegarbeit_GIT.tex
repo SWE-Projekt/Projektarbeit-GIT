@@ -217,10 +217,8 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \\
 \qquad \qquad 11.a. & Die Verbindung zum Server kann nicht hergestellt werden. \\
 \qquad \qquad 11.a.1 & Das System informiert den Nutzer. \\
-\qquad \qquad 4.a.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen\\
 \qquad \qquad 11.a.2. & Das Use Case endet erfolglos. \\
 \\
-\qquad \qquad 11.a. & Die Verbindung zum Server kann nicht hergestellt werden \\
 \qquad \qquad 12.a. & Das System stellt Überschneidungen fest.\\
 \qquad \qquad 12.a.1. & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
 \qquad \qquad 12.a.2. & Fortsetzung bei 13.\\
@@ -305,37 +303,67 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \end{tabularx}
 \\
 
-%---------------------------------------------------------------------------------------------------------
-%-----------------------Diesen Teil würde ich löschen------------------------------------------------------
-\textbf{Use Case: 			Repository verwalten}\\
-Kurzbeschreibung: 	Ein Repository wird verwaltet.\\
-Vorbedingung:	Keine – es kann auch erst bei der Verwaltung ein Repository angelegt werden.\\
-Primärer Aktor:	Admin\\
-Nachbedingung:	Repository verändert. \\
-Erfolgsszenario:\\
-\\
-Der Admin spezifiziert eine Verwaltungsoperation (löschen, erstellen umbenennen). Das System führt die entsprechende Aktion aus und informiert den Admin über den Erfolg der Aktion. Das Use Case endet erfolgreich.\\
-\\
-\textbf{Use Case: 			Rechte verwalten}\\
-Kurzbeschreibung: 	Der Admin kann Leserechte und ausführrecht für bestimmte Nutzergruppen verteilen.\\
-Vorbedingung:	Es muss mindestens eine Gruppe bestehen. \\
-Primärer Aktor:	Admin\\
-Nachbedingung:	Die Rechte wurden geändert. \\
-Erfolgsszenario:\\
-\\
-Der Admin gibt das Kommando zum Verwalten von Rechten in die Shell ein mit dem Namen der zu verwaltenden Gruppe. Das System listet die Rechte der ausgewählten Gruppe. Der Admin gibt entsprechende Kommandos zum Verwalten der Rechte ein. Das System informiert den Admin über eine erfolgreiche Ausführung der Aktion. Das Use Case endet erfolgreich.\\
-\\
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Use Case:} & Repository verwalten\\
+\textbf{Kurzbeschreibung:} & Ein Repository wird verwaltet.\\
+\textbf{Vorbedingung:} & Keine – es kann auch erst bei der Verwaltung ein Repository angelegt werden.\\
+\textbf{Primärer Aktor:}	 & Admin\\
+\textbf{Nachbedingung:}	& Repository verändert.\\
+\textbf{Erfolgsszenario:} & 
+\end{tabularx}
 
-Repository: Die Projektdaten und Informationen des Git-Systems (History, Branches, etc).
-%--------------------------------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------------------------------
+\begin{tabularx}{\textwidth}{lX}
+\\
+\qquad 1. & Der Admin spezifiziert eine Verwaltungsoperation (löschen, erstellen umbenennen). \\
+\qquad 2. & Das System führt die entsprechende Aktion aus und informiert den Admin über den Erfolg der Aktion. \\
+\qquad 3. & Das Use Case endet erfolgreich.\\\\\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Erweiterungen:}\\\\
+\qquad \qquad 2.a. & Das System kann keine Verbindung zum Git-Server herstellen.\\
+\qquad \qquad 2.a.1. & Das Use-Case endet erfolglos\\\\
+\qquad \qquad (1.-2.)b. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-2.)b.1. & Das Use-Case endet erfolglos.\\\\
+\end{tabularx}
+\newpage
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Use Case:} & Rechte verwalten\\
+\textbf{Kurzbeschreibung:} & Der Admin kann Leserechte und Ausführrechte für bestimmte Nutzergruppen verteilen.\\
+\textbf{Vorbedingung:} & Es muss mindestens eine Gruppe bestehen. \\
+\textbf{Primärer Aktor:} & Admin\\
+\textbf{Nachbedingung:} & Die Rechte wurden geändert. \\
+\textbf{Erfolgsszenario:} & 
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\\
+\qquad 1. & Der Admin gibt das Kommando zum Verwalten von Rechten in die Shell ein mit dem Namen der zu verwaltenden Gruppe.\\
+\qquad 2. & Das System listet die Rechte der ausgewählten Gruppe. Der Admin gibt entsprechende Kommandos zum Verwalten der Rechte ein. \\
+\qquad 3. & Das System informiert den Admin über eine erfolgreiche Ausführung der Aktion. Das Use Case endet erfolgreich.\\\\\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Erweiterungen:}\\\\
+\qquad \qquad 1.a. & Das System kann keine Verbindung zum Git-Server herstellen.\\
+\qquad \qquad 1.a.1 & Das Use-Case endet erfolglos.\\\\
+
+\qquad \qquad (1.-2.)b. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-2.)b.1. & Das Use-Case endet erfolglos.\\\\
+
+\end{tabularx}
+
+\newpage	
+
+
+
 \newpage	
 \subsection{Domänenmodell}
 
 \includegraphics[width=\textwidth]{Domaenenmodell.jpg}\\
 Die Abbildung stellt das Domänenmodell der Software GIT dar.\\\\
 
-Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe Clone Repository - Zustandsdiagramm). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele \gls{Changeset}s. Jeder Branch enthält einen \gls{Pointer} (\gls{Head}) welcher auf das letzte in diesem \gls{Branch} erzeugte Changeset zeigt. Die Changesets zeigen mittels eines Pointers auf das jeweilige Changeset welches zuvor erzeugt wurde. Durch diese listenartige Verkettung entsteht die History. Durch die Verschiebung des Heads besteht die Möglichkeit vorgenommene Änderungen wieder rückgängig zu machen. Jedes Changeset beinhaltet mindestens eine Modifikation. Eine Modifikation ist eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. 
+Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe Clone Repository - Zustandsdiagramm). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele \gls{Changeset}s. Jeder Branch enthält einen \gls{Pointer} (\gls{Head}) welcher auf das letzte in diesem Branch erzeugte Changeset zeigt. Die Changesets zeigen mittels eines Pointers auf das jeweilige Changeset welches zuvor erzeugt wurde. Durch diese listenartige Verkettung entsteht die History. Durch die Verschiebung des Heads besteht die Möglichkeit vorgenommene Änderungen wieder rückgängig zu machen. Jedes Changeset beinhaltet mindestens eine Modifikation. Eine Modifikation ist eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. 
 
 \newpage		
 \subsection{Ausgewählte Zustandsdiagramme}
@@ -370,14 +398,6 @@ Ein Konflikt tritt auf, wenn Änderungen an der gleichen Stelle vorgenommen wurd
 Der Nutzer muss dann den Konflikt lösen in dem er dem Programm sagt welche Änderung übernommen werden soll.
 
 \newpage	
-\underline{\textbf{\textsc{Merge}}}\\
-
-Hallo Freunde, sollen wir es tun? -> definitiv NEIN!
-
-\underline{\textbf{\textsc{Branch}}}\\
-
-
-\newpage	
 %---Glossar als subsection und "Glossar" einfügen------------------------------------------
 \setglossarysection{subsection}
 \printglossary[title={Glossar}, numberedsection]
@@ -387,13 +407,21 @@ Hallo Freunde, sollen wir es tun? -> definitiv NEIN!
 \newpage		
 \section{\underline{Erfahrung aus der Teamarbeit}}
 
-	gemeinsam gewählter Prozess...
-	(Gemeinsam)
+Git hat uns beste Möglichkeiten geboten gemeinsam an dem Projekt zu arbeiten.
+Die Versionsverwalung und das Austauschen der Daten ermöglichten uns auch in Zweiergruppen an den Teilen zu arbeiten. \\
+Das gemeinschaftliche Zusammenfügen der Daten lief dann problemlos.\\
+Allerdings ist auch nicht zu vernachlässigen, dass wir das Git-System bis an die Grenzen betrieben haben und es zu dem ein oder anderen Konflikt mit er Software kam.\\
+Alles in allem lässt sich die Teamarbeit als erfolgreich betrachten. Auch wenn es nicht imer einfach war ein gemeinsames Treffen zu koordinieren. 
+\\\\
+
 
 \section{\underline{Schlussbetrachtung}}
 	
-	Zusammenfassend kann man sagen das hier noch nicht so viel passiert ist ;)	
-	(Gemeinsam)
+Zusammenfassend lässt sich sagen, dass diese Projektarbeit eine gute Möglichkeit war sich mit Git und mit den Werkzeugen des Software Engineerings auseinander zu setzen.\\
+Es ist allerdings zu bedenken, dass man eine gewisse Einbearbeitungszeit benötigt um mit Git umgehen zu können.\\
+Des Weiteren haben wir dieses Projekt dazu genutzt uns mit Latex zu beschäftigen. Es hat uns fasziniert die Möglichkeiten von Latex zu entdecken, auch wenn es einige Probleme ergab. \\
+
+
 	
 \end{document}
 
