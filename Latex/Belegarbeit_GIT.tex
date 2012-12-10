@@ -41,13 +41,12 @@
 \newglossaryentry{Repository}	{name=Repository,description={dt. Lager, Depot, Repositorium. enthält die Geschichte eines Projekts. Jeder Nutzer hat ein eigenes Repository mit der gesamten Geschichte}}
 \newglossaryentry{Clone} 		{name=Clone		,description={engl. kopieren}}
 \newglossaryentry{Branch}		{name=Branch	,description={engl. Zweig. Ein Entwicklungszweig in der Geschichte}}
-\newglossaryentry{Switch}		{name=Switch	,description={engl. wechseln}}
+\newglossaryentry{Switch}		{name=Switch	,description={engl. wechseln, Switch ermöglicht das Wechseln auf einen anderen Branch (arbeitet man z.B. auf einem seperaten Branch, könnte man mit switch zurück zum Master Branch wechseln)}}
 \newglossaryentry{pull}			{name=Pull		,description={engl. ziehen. Lädt Objekte und Branches. Lädt somit alle Änderungen}}
-% \newglossaryentry{fetch}		{name=Fetch		,description={engl. holen, holt Brachnes von fernen? Repositories}} ------> Brauchen Wir das überhaupt ?
-\newglossaryentry{commit}		{name=Commit	,description={engl. übergeben - Mit diesem Befehl werden lokale Änderungen im lokalen Repository gespeichert. }}
+\newglossaryentry{commit}		{name=Commit	,description={engl. übergeben - Mit diesem Befehl werden lokale Änderungen im lokalen Repository gespeichert }}
 \newglossaryentry{Pointer}		{name=Pointer	,description={engl. Zeiger, Verweis auf ein existierendes Objekt}}
 \newglossaryentry{Changeset}		{name=Changeset	,description={mehrere Änderungen zu einer Einheit zusammengefasst}}
-\newglossaryentry{Head}		{name=Head	,description={engl. Kopf, Verweis auf die aktuelle Änderung. Neue Änderungen werden hinter dem Head gespeichert.}}
+\newglossaryentry{Head}		{name=Head	,description={engl. Kopf, Verweis auf die aktuelle Änderung. Neue Änderungen werden hinter dem Head gespeichert}}
 %-------------------------------------------------------------------------------------
 
 \begin{document}
@@ -130,7 +129,7 @@ Der Git-Server (\textit{Sekundäre Aktor}) wird von dem Git-System genutzt um ei
 Der Programmierer repräsentiert eine Personengruppe. An einem Projekt können beliebig viele Programmierer beteiligt seien.  
 Der Admin erbt alle Fähigkeiten von dem Programmierer. Demnach kann der Admin auch alle anderen Interaktionen ausüben.  \\
 \\
-Im Use-Case sind die Möglichkeiten, Verwalte Repository, Verwalte Rechte, \gls{Clone} Reopisitory, Bearbeite Quellecode, Erstelle Branch, merge Branch und \gls{Switch} Branch aufgeführt. \\
+Im Use-Case sind die Möglichkeiten, Verwalte Repository, Verwalte Rechte, \gls{Clone} Repository, Bearbeite Quellecode, Erstelle Branch, merge Branch und \gls{Switch} Branch aufgeführt. \\
 \\
 Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien. 
 
@@ -142,30 +141,34 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \\
 \textbf{Use Case:} & Clone Repository \\
 \textbf{Kurzbeschreibung:}& Der Programmierer kopiert sämtliche Daten des Repositories auf seinen lokalen Rechner. \\ 
-\textbf{Vorbedingung:} & Ein Repository muss auf dem Server existieren  \\ 
+\textbf{Vorbedingung:} & Ein Repository muss auf dem Server existieren.  \\ 
 \textbf{Primärer Aktor:} & Programmierer  \\ 
-\textbf{Nachbedingung:} & Das Repository auf dem Rechner des Programmierers ist mit dem auf dem Server identisch  \\ 
+\textbf{Nachbedingung:} & Das Repository auf dem Rechner des Programmierers ist mit dem auf dem Server identisch.  \\ 
 \textbf{Erfolgsszenario:} & 
 \end{tabularx}
 \\
 \begin{tabularx}{\textwidth}{lX}
 \\
-\qquad 1. & Der Programmierer gibt das Kommando zum Klonen eines Repositories \\
-\qquad 2. & Das System verbindet sich mit dem Server \\
-\qquad 3. & Das System überträgt das Repository vom Server auf den Rechner des Programmierers \\
-\qquad 4. & Das System informiert den Programmierer über den Erfolg der Aktion \\
-\qquad 5. & Das Use Case endet erfolgreich\\\\\hline
+\qquad 1. & Der Programmierer gibt das Kommando zum Klonen eines Repositories. \\
+\qquad 2. & Das System verbindet sich mit dem Server. \\
+\qquad 3. & Das System überträgt das Repository vom Server auf den Rechner des Programmierers. \\
+\qquad 4. & Das System informiert den Programmierer über den Erfolg der Aktion. \\
+\qquad 5. & Das Use Case endet erfolgreich.\\\\\hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Erweiterungen:}\\\\
-\qquad \qquad 2.a. & Die Verbindung zum Server kann nicht hergestellt werden \\
-\qquad \qquad 2.a.1 & Das System informiert den Nutzer \\
-\qquad \qquad 2.a.2 & Das Use Case endet erfolglos \\
+\qquad \qquad (1.-4.)b. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-4.)b.1. & Das Use-Case endet erfolglos.\\
 \\
-\qquad \qquad 3.a. & Die Verbindung bricht während der Übertragung ab \\
-\qquad \qquad 3.a.1 & Das System informiert den Nutzer \\
-\qquad \qquad 3.a.2 & Das Use Case endet erfolglos \\\\
+\qquad \qquad 2.a. & Die Verbindung zum Server kann nicht hergestellt werden. \\
+\qquad \qquad 2.a.1. & Das System informiert den Nutzer. \\
+\qquad \qquad 2.a.2. & Das Use Case endet erfolglos. \\
+\\
+\qquad \qquad 3.a. & Die Verbindung bricht während der Übertragung ab. \\
+\qquad \qquad 3.a.1. & Das System informiert den Nutzer. \\
+\qquad \qquad 3.a.2. & Das Use Case endet erfolglos. \\\\
+
 \end{tabularx}
 
 \newpage
@@ -173,54 +176,61 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \begin{tabularx}{\textwidth}{lX}
 \\
 \textbf{Use Case:} &	Quellcode bearbeiten\\
-\textbf{Kurzbeschreibung:} &	Der Programmierer möchte den Quellcode ändern. Dazu muss er das Repositorie auf den neuesten Stand bringen (‚\gls{pull}‘), den Quellcode bearbeiten, die Änderungen übernehmen (‚\gls{commit}‘) und die Änderungen an den Server übertragen (‚Push‘)\\
+\textbf{Kurzbeschreibung:} &	Der Programmierer möchte den Quellcode ändern. Dazu muss er das Repositorie auf den neuesten Stand bringen (‚\gls{pull}‘), den Quellcode bearbeiten, die Änderungen übernehmen (‚\gls{commit}‘) und die Änderungen an den Server übertragen (‚Push‘).\\
 \textbf{Vorbedingung:} &	Ein Repository muss sich auf dem Rechner und auf dem Server befinden.\\
-\textbf{Primärer Aktor:} &	Programmierer\\
+\textbf{Primärer Aktor:} &	Programmierer.\\
 \textbf{Nachbedingung:}	& Die Änderungen des Programmierers werden registriert und in die History aufgenommen.\\
 \textbf{Erfolgsszenario:} & 
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{lX}
 \\
-\qquad 1. & Der Programmierer gibt das Kommando zum Holen von Änderungen (‚Pull‘)\\
-\qquad 2. & Das System verbindet sich mit dem Server\\
-\qquad 3. & Das System vergleicht den lokalen Zustand des Branches mit dem auf dem Server\\
-\qquad 4. & Das System integriert (‚merge‘) den Branch auf dem Server in den Branch auf dem Rechner\\
-\qquad 5. & Das System informiert den Programmierer über den Erfolg der Aktion\\
-\qquad 6. & Der Programmierer ändert den Quellcode\\
-\qquad 7. & Das System verfolgt die Änderungen\\
-\qquad 8. & Der Programmierer gibt das Kommando zum Übernehmen (‚Commit‘) von Änderungen mit einer Kurzbeschreibung seiner Änderungen\\
-\qquad 9. & Das System übernimmt die Änderungen und trägt sie in die History des aktuellen Branches ein\\
-\qquad 10. & Das System informiert den Programmierer über den Erfolg der Aktion\\
-\qquad 11. & Der Programmierer gibt das Kommando zum Übertragen der Änderungen (‚Push‘) auf den Server\\
-\qquad 12. & Das System integriert den aktuellen Branch des Rechners in den entsprechenden Branch auf dem Server (‚merge‘)\\
-\qquad 13. & Das System liefert dem Programmierer eine Erfolgsmeldung\\
-\qquad 14. & Das Use Case endet erfolgreich\\\\\hline
+\qquad 1. & Der Programmierer gibt das Kommando zum Holen von Änderungen (‚Pull‘).\\
+\qquad 2. & Das System verbindet sich mit dem Server.\\
+\qquad 3. & Das System vergleicht den lokalen Zustand des Branches mit dem auf dem Server.\\
+\qquad 4. & Das System integriert (‚merge‘) die Änderungen der Dateien in die lokalen Dateien auf dem Rechner.\\
+\qquad 5. & Das System informiert den Programmierer über den Erfolg der Aktion.\\
+\qquad 6. & Der Programmierer ändert den Quellcode.\\
+\qquad 7. & Das System verfolgt die Änderungen und zeigt sie an.\\
+\qquad 8. & Der Programmierer gibt das Kommando zum Übernehmen (‚Commit‘) von Änderungen mit einer Kurzbeschreibung seiner Änderungen.\\
+\qquad 9. & Das System übernimmt die Änderungen und trägt sie in die History des aktuellen Branches ein.\\
+\qquad 10. & Das System informiert den Programmierer über den Erfolg der Aktion.\\
+\qquad 11. & Der Programmierer gibt das Kommando zum Übertragen der Änderungen (‚Push‘) auf den Server.\\
+\qquad 12. & Das System integriert den aktuellen Branch des Rechners in den entsprechenden Branch auf dem Server (‚merge‘).\\
+\qquad 13. & Das System liefert dem Programmierer eine Erfolgsmeldung.\\
+\qquad 14. & Das Use Case endet erfolgreich.\\\\\hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Erweiterungen:}\\\\
-\qquad \qquad 2.a. & Die Verbindung zum Server kann nicht hergestellt werden \\
-\qquad \qquad 2.a.1 & Das System informiert den Nutzer \\
-\qquad \qquad 2.a.2 & Das Use Case endet erfolglos \\
+\qquad \qquad (1.-13.)b. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-13.)b.1. & Das Use-Case endet erfolglos.\\
 \\
-\qquad \qquad 3.a. & Das System stellt keine Änderungen fest\\
-\qquad \qquad 3.a.1 & Das Use Case endet erfolgreich\\
+\qquad \qquad 2.a. & Die Verbindung zum Server kann nicht hergestellt werden. \\
+\qquad \qquad 2.a.1. & Das System informiert den Nutzer. \\
+\qquad \qquad 2.a.2. & Das Use Case endet erfolglos. \\
+
 \\
-\qquad \qquad 4.a. & Das System stellt Überschneidungen fest\\
+\qquad \qquad 4.a. & Das System stellt Überschneidungen fest.\\
+\qquad \qquad 4.a.1. & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
+\qquad \qquad 4.a.2. & Fortsetzung bei 5.\\
+\\
+\qquad \qquad 11.a. & Die Verbindung zum Server kann nicht hergestellt werden. \\
+\qquad \qquad 11.a.1 & Das System informiert den Nutzer. \\
 \qquad \qquad 4.a.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen\\
-\qquad \qquad 4.a.2 & Fortsetzung bei 5.\\
+\qquad \qquad 11.a.2. & Das Use Case endet erfolglos. \\
 \\
 \qquad \qquad 11.a. & Die Verbindung zum Server kann nicht hergestellt werden \\
-\qquad \qquad 11.a.1 & Das System informiert den Nutzer \\
-\qquad \qquad 11.a.2 & Das Use Case endet erfolglos \\
+\qquad \qquad 12.a. & Das System stellt Überschneidungen fest.\\
+\qquad \qquad 12.a.1. & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
+\qquad \qquad 12.a.2. & Fortsetzung bei 13.\\
 \end{tabularx}
 
 \newpage
 
 \begin{tabularx}{\textwidth}{lX}
 \\
-\textbf{Use Case:} & Branch erstellen\\
+\textbf{Use Case:} & Branch erstellen.\\
 \textbf{Kurzbeschreibung:} & Das System erstellt einen neuen Branch mit dem Zustand des Branches auf dem sich der Programmierer befindet.\\
 \textbf{Vorbedingung:} & Es muss ein Repository existieren.\\
 \textbf{Primärer Aktor:} & Programmierer\\
@@ -230,24 +240,26 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \\
-\qquad 1. & Der Programmierer gibt das Kommando zum Erstellen eines Branches mit dem Namen des neuen Branches\\
-\qquad 2. & Das System erzeugt einen neuen Branch\\
+\qquad 1. & Der Programmierer gibt das Kommando zum Erstellen eines Branches mit dem Namen des neuen Branches.\\
+\qquad 2. & Das System erzeugt einen neuen Branch.\\
 \qquad 3. & Das Use Case endet erfolgreich.\\\\\hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Erweiterungen:}\\\\
-\qquad \qquad 1.a. & Das System stellt fest das dieser Name schon vergeben ist\\
-\qquad \qquad 1.a.1 & Das System fordert den Nutzer auf einen anderen Namen zu wählen\\
-\qquad \qquad 1.a.2 & Der Nutzer gibt einen noch nicht vergebenen Namen ein\\
-\qquad \qquad 1.a.3 & Fortsetzung bei 2.\\\\\hline\hline\\
+\qquad \qquad 1.a. & Das System stellt fest das dieser Name schon vergeben ist.\\
+\qquad \qquad 1.a.1. & Das System fordert den Nutzer auf einen anderen Namen zu wählen.\\
+\qquad \qquad 1.a.2. & Der Nutzer gibt einen noch nicht vergebenen Namen ein.\\
+\qquad \qquad 1.a.3. & Fortsetzung bei 2.\\\\
+\qquad \qquad (1.-2.)b. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-2.)b.1. & Das Use-Case endet erfolglos.\\\\\hline\hline\\
 \end{tabularx}
 
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Use Case:} & Branch mergen\\
-\textbf{Kurzbeschreibung:} & Ein Branch wird in einen anderen Branch integriert\\
-\textbf{Vorbedingung:} & Es müssen 2 Branches existieren.\\
+\textbf{Kurzbeschreibung:} & Ein Branch wird in einen anderen Branch integriert.\\
+\textbf{Vorbedingung:} & Es müssen min. 2 Branches existieren.\\
 \textbf{Primärer Aktor:} & Programmierer\\
 \textbf{Nachbedingung:}	& Es gibt einen neuen Branch.\\
 \textbf{Erfolgsszenario:} &
@@ -255,18 +267,21 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \\
-\qquad 1. & Der Programmierer gibt das Kommando zum Mergen eines Branches mit dem Namen des zu integrierenden Branches\\
-\qquad 2. & Das System integriert den Branche in den aktiven Branche\\
+\qquad 1. & Der Programmierer gibt das Kommando zum Mergen eines Branches mit dem Namen des zu integrierenden Branches.\\
+\qquad 2. & Das System integriert den Branche in den aktiven Branche.\\
 \qquad 3. & Das Use Case endet erfolgreich.\\\\\hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Erweiterungen:}\\\\
-\qquad \qquad 1.a. & Das System stellt Überschneidungen fest\\
-\qquad \qquad 1.a.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen\\
-\qquad \qquad 1.a.2 & Fortsetzung bei 2.\\\\\hline\hline\\
-\end{tabularx}
+\qquad \qquad 1.a. & Das System stellt Überschneidungen fest.\\
+\qquad \qquad 1.a.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
+\qquad \qquad 1.a.2 & Fortsetzung bei 2.\\\\
+\qquad \qquad (1.-2.)b. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-2.)b.1. & Das Use-Case endet erfolglos.\\\\
 
+\end{tabularx}
+\newpage
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Use Case:} & Branch switchen\\
 \textbf{Kurzbeschreibung}: &	Der aktuelle Branch auf dem Rechner wird gewechselt (‚switch‘)\\
@@ -278,12 +293,18 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \\
-\qquad 1. & Der Programmierer gibt das Kommando zum Wechseln eines Branches (‚switch‘) mit dem Namen des Zielbranches\\
-\qquad 2. & Das System wechselt zum Zielbranch\\
-\qquad 3. & Das Use Case endet erfolgreich.\\
+\qquad 1. & Der Programmierer gibt das Kommando zum Wechseln eines Branches (‚switch‘) mit dem Namen des Zielbranches.\\
+\qquad 2. & Das System wechselt zum Zielbranch.\\
+\qquad 3. & Das Use Case endet erfolgreich.\\\\\hline
 \end{tabularx}
 
-\newpage
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Erweiterungen:}\\\\
+\qquad \qquad (1.-2.)a. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-2.)a.1. & Das Use-Case endet erfolglos.\\\\\hline\hline\\
+\end{tabularx}
+\\
+
 %---------------------------------------------------------------------------------------------------------
 %-----------------------Diesen Teil würde ich löschen------------------------------------------------------
 \textbf{Use Case: 			Repository verwalten}\\
