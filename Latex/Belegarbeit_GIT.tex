@@ -37,16 +37,17 @@
 % --> makeindex -s %.ist -t %.glg -o %.gls %.glo
 % und unter -> Option -> Texmaker konfigurieren -> Makeindex Verweis aktualisieren!
 
-\newglossaryentry{merge}		{name=Merge		,description={engl. zusammenführen, Vereinigung von Branches}}
-\newglossaryentry{Repository}	{name=Repository,description={dt. Lager, Depot, Repositorium. enthält die Geschichte eines Projekts. Jeder Nutzer hat ein eigenes Repository mit der gesamten Geschichte}}
+\newglossaryentry{merge}		{name=Merge		,description={engl. zusammenführen - Vereinigung von Branches}}
+\newglossaryentry{Repository}	{name=Repository,description={dt. Lager, Depot - Repositorium enthält die Geschichte eines Projekts. Jeder Nutzer hat ein eigenes Repository mit der gesamten Geschichte}}
 \newglossaryentry{Clone} 		{name=Clone		,description={engl. kopieren}}
-\newglossaryentry{Branch}		{name=Branch	,description={engl. Zweig. Ein Entwicklungszweig in der Geschichte}}
-\newglossaryentry{Switch}		{name=Switch	,description={engl. wechseln, Switch ermöglicht das Wechseln auf einen anderen Branch (arbeitet man z.B. auf einem seperaten Branch, könnte man mit switch zurück zum Master Branch wechseln)}}
-\newglossaryentry{pull}			{name=Pull		,description={engl. ziehen. Lädt Objekte und Branches. Lädt somit alle Änderungen}}
+\newglossaryentry{Branch}		{name=Branch	,description={engl. Zweig - ein Entwicklungszweig in der Geschichte}}
+\newglossaryentry{Switch}		{name=Switch	,description={engl. wechseln - Switch ermöglicht das Wechseln auf einen anderen Branch (arbeitet man z.B. auf einem seperaten Branch, könnte man mit switch zurück zum Master Branch wechseln)}}
+\newglossaryentry{pull}			{name=Pull		,description={engl. ziehen - Lädt Objekte und Branches. Lädt somit alle Änderungen}}
 \newglossaryentry{commit}		{name=Commit	,description={engl. übergeben - Mit diesem Befehl werden lokale Änderungen im lokalen Repository gespeichert }}
-\newglossaryentry{Pointer}		{name=Pointer	,description={engl. Zeiger, Verweis auf ein existierendes Objekt}}
+\newglossaryentry{Pointer}		{name=Pointer	,description={engl. Zeiger - Verweis auf ein existierendes Objekt}}
 \newglossaryentry{Changeset}		{name=Changeset	,description={mehrere Änderungen zu einer Einheit zusammengefasst}}
-\newglossaryentry{Head}		{name=Head	,description={engl. Kopf, Verweis auf die aktuelle Änderung. Neue Änderungen werden hinter dem Head gespeichert}}
+\newglossaryentry{Head}		{name=Head	,description={engl. Kopf - Verweis auf die aktuelle Änderung. Neue Änderungen werden hinter dem Head gespeichert}}
+\newglossaryentry{push}		{name=Push		,description={engl. anschieben - Mit diesem Befehl werden die lokalen Änderungen auf den Server übertragen}}
 %-------------------------------------------------------------------------------------
 
 \begin{document}
@@ -72,18 +73,10 @@
 
 \newpage
 
-\textcolor{red}
-{
-	FERTIGSTELLUNG BIS 09.12.!!!!!!!!!!! 
-	und wehe nicht!!!!!!!!!!!!!\\
-	- PDF vollenden (gemeinsame Punkte bearbeiten)\\
-	- Präsentation fertigstellen (16.12. / 22.12.)
-}
 %---Erster Punkt--------------------------------------------------------------------
 \section{\underline{Einführung und Ziel der Arbeit}} 	% Section erstellt automatisch den jeweiligen Punkt. Das erste Section erstellt Punkt 1, das 2te Punkt 1 etc.
 
 \subsection{Einführung} 								% Subsection erstellt automatisch Unterpunkte
-
 
 Git ist ein freies Versionsverwaltungssystem, dass von Linus Torvald entwickelt wurde.
 (Das zu der Zeit existierende Versionsverwaltungssystem BitKeeper war aus Lizenzgründen nicht mehr für das Linuxentwicklerteam zugänglich, und so entschied sich Torvald dafür, ein eigenes System zu schreiben.) \\
@@ -129,7 +122,7 @@ Der Git-Server (\textit{Sekundäre Aktor}) wird von dem Git-System genutzt um ei
 Der Programmierer repräsentiert eine Personengruppe. An einem Projekt können beliebig viele Programmierer beteiligt seien.  
 Der Admin erbt alle Fähigkeiten von dem Programmierer. Demnach kann der Admin auch alle anderen Interaktionen ausüben.  \\
 \\
-Im Use-Case sind die Möglichkeiten, Verwalte Repository, Verwalte Rechte, \gls{Clone} Repository, Bearbeite Quellecode, Erstelle Branch, merge Branch und \gls{Switch} Branch aufgeführt. \\
+Im Use-Case sind die Möglichkeiten, Verwalte Repository, Verwalte Rechte, \gls{Clone} Repository, Bearbeite Quellecode, Erstelle Branch, Merge Branch und \gls{Switch} Branch aufgeführt. \\
 \\
 Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien. 
 
@@ -176,9 +169,9 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \begin{tabularx}{\textwidth}{lX}
 \\
 \textbf{Use Case:} &	Quellcode bearbeiten\\
-\textbf{Kurzbeschreibung:} &	Der Programmierer möchte den Quellcode ändern. Dazu muss er das Repositorie auf den neuesten Stand bringen (‚\gls{pull}‘), den Quellcode bearbeiten, die Änderungen übernehmen (‚\gls{commit}‘) und die Änderungen an den Server übertragen (‚Push‘).\\
+\textbf{Kurzbeschreibung:} &	Der Programmierer möchte den Quellcode ändern. Dazu muss er das Repositorie auf den neuesten Stand bringen (‚\gls{pull}‘), den Quellcode bearbeiten, die Änderungen übernehmen (‚\gls{commit}‘) und die Änderungen an den Server übertragen (‚\gls{push}‘).\\
 \textbf{Vorbedingung:} &	Ein Repository muss sich auf dem Rechner und auf dem Server befinden.\\
-\textbf{Primärer Aktor:} &	Programmierer.\\
+\textbf{Primärer Aktor:} &	Programmierer\\
 \textbf{Nachbedingung:}	& Die Änderungen des Programmierers werden registriert und in die History aufgenommen.\\
 \textbf{Erfolgsszenario:} & 
 \end{tabularx}
@@ -228,7 +221,7 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \\
-\textbf{Use Case:} & Branch erstellen.\\
+\textbf{Use Case:} & Branch erstellen\\
 \textbf{Kurzbeschreibung:} & Das System erstellt einen neuen Branch mit dem Zustand des Branches auf dem sich der Programmierer befindet.\\
 \textbf{Vorbedingung:} & Es muss ein Repository existieren.\\
 \textbf{Primärer Aktor:} & Programmierer\\
@@ -314,7 +307,7 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \\
-\qquad 1. & Der Admin spezifiziert eine Verwaltungsoperation (löschen, erstellen umbenennen). \\
+\qquad 1. & Der Admin spezifiziert eine Verwaltungsoperation (löschen, erstellen, umbenennen). \\
 \qquad 2. & Das System führt die entsprechende Aktion aus und informiert den Admin über den Erfolg der Aktion. \\
 \qquad 3. & Das Use Case endet erfolgreich.\\\\\hline
 \end{tabularx}
@@ -339,8 +332,10 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \begin{tabularx}{\textwidth}{lX}
 \\
 \qquad 1. & Der Admin gibt das Kommando zum Verwalten von Rechten in die Shell ein mit dem Namen der zu verwaltenden Gruppe.\\
-\qquad 2. & Das System listet die Rechte der ausgewählten Gruppe. Der Admin gibt entsprechende Kommandos zum Verwalten der Rechte ein. \\
-\qquad 3. & Das System informiert den Admin über eine erfolgreiche Ausführung der Aktion. Das Use Case endet erfolgreich.\\\\\hline
+\qquad 2. & Das System listet die Rechte der ausgewählten Gruppe. \\
+\qquad 3. & Der Admin gibt entsprechende Kommandos zum Verwalten der Rechte ein. \\
+\qquad 4. & Das System informiert den Admin über eine erfolgreiche Ausführung der Aktion.\\
+\qquad 5. & Das Use Case endet erfolgreich.\\\\\hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{lX}
@@ -363,10 +358,10 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \includegraphics[width=\textwidth]{Domaenenmodell.jpg}\\
 Die Abbildung stellt das Domänenmodell der Software GIT dar.\\\\
 
-Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe Clone Repository - Zustandsdiagramm). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele \gls{Changeset}s. Jeder Branch enthält einen \gls{Pointer} (\gls{Head}) welcher auf das letzte in diesem Branch erzeugte Changeset zeigt. Die Changesets zeigen mittels eines Pointers auf das jeweilige Changeset welches zuvor erzeugt wurde. Durch diese listenartige Verkettung entsteht die History. Durch die Verschiebung des Heads besteht die Möglichkeit vorgenommene Änderungen wieder rückgängig zu machen. Jedes Changeset beinhaltet mindestens eine Modifikation. Eine Modifikation ist eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. 
+Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe \hyperlink{target}{Clone Repository} - Zustandsdiagramme). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele \gls{Changeset}s. Jeder Branch enthält einen \gls{Pointer} (\gls{Head}) welcher auf das letzte in diesem Branch erzeugte Changeset zeigt. Die Changesets zeigen mittels eines Pointers auf das jeweilige Changeset welches zuvor erzeugt wurde. Durch diese listenartige Verkettung entsteht die History. Durch die Verschiebung des Heads besteht die Möglichkeit vorgenommene Änderungen wieder rückgängig zu machen. Jedes Changeset beinhaltet mindestens eine Modifikation. Eine Modifikation ist eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. 
 
 \newpage		
-\subsection{Ausgewählte Zustandsdiagramme}
+\subsection{Ausgewählte Zustandsdiagramme} \label{sec:zustandsd}
 
 	Um das Verhalten eines Programms im laufenden Betrieb zu untersuchen, bedient man sich sogenannter \textbf{Zustandsdiagramme} \\
 	Zustandsdiagramme bieten ein geeignetes Vokabular um das Ein- und Ausgabeverhalten eines Programms kompakt und präzise zu beschreiben.
@@ -374,7 +369,6 @@ Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf e
 
 \underline{\textbf{\textsc{Push und Commit}}} \\
 \includegraphics[width=\textwidth]{PuCo.jpg}\\\\
-\textbf{Anmerkung:} Revert / Änderung wurden Rückgängig gemacht --> Pfeil von "Anzeige Änderung.." nach "Verzeichnis ist unverändert"\\\\
 Die Möglichkeit zu commiten gibt es nur, wenn Änderungen vorliegen. Ansonsten wird eine Fehlermeldung ausgegeben, die den Nutzer darauf aufmerksam macht, dass es nichts zu commiten gibt.
 Wurden Dateien oder Dokumente verändert, wird im SmartGit Fenster angezeigt, welche Dateien verändert wurden.\\
 Der Nutzer hat in jedem Zustand die Möglichkeit, den Push-Button zu betätigen, allerdings mit unterschiedlichem Effekt:\\
@@ -382,15 +376,14 @@ Wurden die Änderungen noch nicht committed werden sie auch nicht auf den Server
 Es gibt nun den Fall, dass Änderungen vorgenommen und committed wurden, ohne das sie gepusht wurden.
 Wenn der Nutzer nun weitere Änderung vornimmt, hat er die Möglichkeit die vorhergegangenen Änderungen auf den Server zu pushen, ohne dass die aktuellen Änderungen mit übernommen werden. 
 \newpage	
-\underline{\textbf{\textsc{Clone Repository}}}\\
+\underline{\textbf{\textsc{\hypertarget{target}{Clone Repository}}}} \\
 \includegraphics[width=\textwidth]{Clone.jpg}\\\\
 Zu Beginn eines Projektes kann der Anwender ein existierendes Repository zu seinem Projekt hinzufügen.
 Dafür benötigt er die genau Web-Adresse eines bereits existierenden Repositorys. Diese wird dann vom System validiert. Bei Falscher Eingabe gibt es eine Fehlermeldung und der Nutzer gelangt zurück in das Abfragemenü.
 Bei erfolgreicher Anmeldung wird das Repository lokal auf dem Computer gespeichert. \\\\
-Alternative kann auch ein lokales leeres Repository initialisiert werden.\\
+Alternative kann auch ein lokales leeres Repository initialisiert werden.\\\\\\
 \underline{\textbf{\textsc{Pull}}}\\
 \includegraphics[width=\textwidth]{Pull.jpg}\\\\
---> \textbf{Anmerkung:} "löse Konflikt" sollte " Konflikt gelöst" heißen.\\\\
 Vom Nutzer gewählter Zeitpunkt" vielleicht besser "Pullstartvorgang"
 Zu jedem vom Nutzer gewählten Zeitraum hat er die Möglichkeit, sein lokales Repository mit dem externen Repository abzugleichen. \\
 Dafür wählt er die Option Pull, die alle seit dem letzten Abgleich veränderten Daten übernimmt.
@@ -408,20 +401,12 @@ Der Nutzer muss dann den Konflikt lösen in dem er dem Programm sagt welche Änd
 \section{\underline{Erfahrung aus der Teamarbeit}}
 
 Git hat uns beste Möglichkeiten geboten gemeinsam an dem Projekt zu arbeiten.
-Die Versionsverwalung und das Austauschen der Daten ermöglichten uns auch in Zweiergruppen an den Teilen zu arbeiten. \\
-Das gemeinschaftliche Zusammenfügen der Daten lief dann problemlos.\\
-Allerdings ist auch nicht zu vernachlässigen, dass wir das Git-System bis an die Grenzen betrieben haben und es zu dem ein oder anderen Konflikt mit er Software kam.\\
-Alles in allem lässt sich die Teamarbeit als erfolgreich betrachten. Auch wenn es nicht imer einfach war ein gemeinsames Treffen zu koordinieren. 
+Die Versionsverwaltung und das Austauschen der Daten ermöglichten uns auch in Zweiergruppen an den einzelnen Teilen zu arbeiten. Das gemeinschaftliche Zusammenfügen der Daten lief dann problemlos. Allerdings ist auch nicht zu vernachlässigen, dass wir das Git-System bis an die Grenzen betrieben haben und es zu dem ein oder anderen Konflikt mit der Software kam. Alles in allem lässt sich die Teamarbeit als erfolgreich betrachten. Auch wenn es nicht immer einfach war ein gemeinsames Treffen zu koordinieren. 
 \\\\
-
 
 \section{\underline{Schlussbetrachtung}}
 	
-Zusammenfassend lässt sich sagen, dass diese Projektarbeit eine gute Möglichkeit war sich mit Git und mit den Werkzeugen des Software Engineerings auseinander zu setzen.\\
-Es ist allerdings zu bedenken, dass man eine gewisse Einbearbeitungszeit benötigt um mit Git umgehen zu können.\\
-Des Weiteren haben wir dieses Projekt dazu genutzt uns mit Latex zu beschäftigen. Es hat uns fasziniert die Möglichkeiten von Latex zu entdecken, auch wenn es einige Probleme ergab. \\
+Zusammenfassend lässt sich sagen, dass diese Projektarbeit eine gute Möglichkeit war sich mit Git und mit den Werkzeugen des Software Engineerings auseinander zu setzen. Es ist allerdings zu bedenken, dass man eine gewisse Einbearbeitungszeit benötigt um mit Git umgehen zu können. Des Weiteren haben wir dieses Projekt dazu genutzt uns mit Latex näher zu beschäftigen. Es hat uns fasziniert die Möglichkeiten von Latex zu entdecken, auch wenn es hier und da einige Probleme gab. \\
 
-
-	
 \end{document}
 
