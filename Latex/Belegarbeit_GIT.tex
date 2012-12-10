@@ -284,31 +284,55 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \end{tabularx}
 
 \newpage
-%---------------------------------------------------------------------------------------------------------
-%-----------------------Diesen Teil würde ich löschen------------------------------------------------------
-\textbf{Use Case: 			Repository verwalten}\\
-Kurzbeschreibung: 	Ein Repository wird verwaltet.\\
-Vorbedingung:	Keine – es kann auch erst bei der Verwaltung ein Repository angelegt werden.\\
-Primärer Aktor:	Admin\\
-Nachbedingung:	Repository verändert. \\
-Erfolgsszenario:\\
-\\
-Der Admin spezifiziert eine Verwaltungsoperation (löschen, erstellen umbenennen). Das System führt die entsprechende Aktion aus und informiert den Admin über den Erfolg der Aktion. Das Use Case endet erfolgreich.\\
-\\
-\textbf{Use Case: 			Rechte verwalten}\\
-Kurzbeschreibung: 	Der Admin kann Leserechte und ausführrecht für bestimmte Nutzergruppen verteilen.\\
-Vorbedingung:	Es muss mindestens eine Gruppe bestehen. \\
-Primärer Aktor:	Admin\\
-Nachbedingung:	Die Rechte wurden geändert. \\
-Erfolgsszenario:\\
-\\
-Der Admin gibt das Kommando zum Verwalten von Rechten in die Shell ein mit dem Namen der zu verwaltenden Gruppe. Das System listet die Rechte der ausgewählten Gruppe. Der Admin gibt entsprechende Kommandos zum Verwalten der Rechte ein. Das System informiert den Admin über eine erfolgreiche Ausführung der Aktion. Das Use Case endet erfolgreich.\\
-\\
 
-Repository: Die Projektdaten und Informationen des Git-Systems (History, Branches, etc).
-%--------------------------------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------------------------------
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Use Case:} & Repository verwalten\\
+\textbf{Kurzbeschreibung:} & Ein Repository wird verwaltet.\\
+\textbf{Vorbedingung:} & Keine – es kann auch erst bei der Verwaltung ein Repository angelegt werden.\\
+\textbf{Primärer Aktor:}	 & Admin\\
+\textbf{Nachbedingung:}	& Repository verändert.\\
+\textbf{Erfolgsszenario:} & 
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\\
+\qquad 1. & Der Admin spezifiziert eine Verwaltungsoperation (löschen, erstellen umbenennen). \\
+\qquad 2. & Das System führt die entsprechende Aktion aus und informiert den Admin über den Erfolg der Aktion. \\
+\qquad 3. & Das Use Case endet erfolgreich.\\\\\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Erweiterungen:}\\\\
+\qquad \qquad 1.a. & Das System stellt Überschneidungen fest\\
+\qquad \qquad 1.a.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen\\
+\qquad \qquad 1.a.2 & Fortsetzung bei 2.\\\\\hline\hline\\
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Use Case:} & Rechte verwalten\\
+\textbf{Kurzbeschreibung:} & Der Admin kann Leserechte und Ausführrechte für bestimmte Nutzergruppen verteilen.\\
+\textbf{Vorbedingung:} & Es muss mindestens eine Gruppe bestehen. \\
+\textbf{Primärer Aktor:} & Admin\\
+\textbf{Nachbedingung:} & Die Rechte wurden geändert. \\
+\textbf{Erfolgsszenario:} & 
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\\
+\qquad 1. & Der Admin gibt das Kommando zum Verwalten von Rechten in die Shell ein mit dem Namen der zu verwaltenden Gruppe.\\
+\qquad 2. & Das System listet die Rechte der ausgewählten Gruppe. Der Admin gibt entsprechende Kommandos zum Verwalten der Rechte ein. \\
+\qquad 3. & Das System informiert den Admin über eine erfolgreiche Ausführung der Aktion. Das Use Case endet erfolgreich.\\\\\hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Erweiterungen:}\\\\
+\qquad \qquad 1.a. & Das System stellt Überschneidungen fest\\
+\qquad \qquad 1.a.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen\\
+\qquad \qquad 1.a.2 & Fortsetzung bei 2.\\
+\end{tabularx}
+
 \newpage	
+
 \subsection{Domänenmodell}
 
 \includegraphics[width=\textwidth]{Domaenenmodell.jpg}\\
