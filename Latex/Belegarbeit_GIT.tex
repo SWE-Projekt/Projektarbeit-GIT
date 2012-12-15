@@ -38,16 +38,14 @@
 % und unter -> Option -> Texmaker konfigurieren -> Makeindex Verweis aktualisieren!
 
 \newglossaryentry{merge}		{name=Merge		,description={engl. zusammenführen - Vereinigung von Branches}}
-\newglossaryentry{Repository}	{name=Repository,description={dt. Lager, Depot - Repositorium enthält die Geschichte eines Projekts. Jeder Nutzer hat ein eigenes Repository mit der gesamten Geschichte}}
-\newglossaryentry{Clone} 		{name=Clone		,description={engl. kopieren}}
-\newglossaryentry{Branch}		{name=Branch	,description={engl. Zweig - ein Entwicklungszweig in der Geschichte}}
-\newglossaryentry{Switch}		{name=Switch	,description={engl. wechseln - Switch ermöglicht das Wechseln auf einen anderen Branch (arbeitet man z.B. auf einem seperaten Branch, könnte man mit switch zurück zum Master Branch wechseln)}}
-\newglossaryentry{pull}			{name=Pull		,description={engl. ziehen - Lädt Objekte und Branches. Lädt somit alle Änderungen}}
-\newglossaryentry{commit}		{name=Commit	,description={engl. übergeben - Mit diesem Befehl werden lokale Änderungen im lokalen Repository gespeichert }}
-\newglossaryentry{Pointer}		{name=Pointer	,description={engl. Zeiger - Verweis auf ein existierendes Objekt}}
-\newglossaryentry{Changeset}		{name=Changeset	,description={mehrere Änderungen zu einer Einheit zusammengefasst}}
-\newglossaryentry{Head}		{name=Head	,description={engl. Kopf - Verweis auf die aktuelle Änderung. Neue Änderungen werden hinter dem Head gespeichert}}
-\newglossaryentry{push}		{name=Push		,description={engl. anschieben - Mit diesem Befehl werden die lokalen Änderungen auf den Server übertragen}}
+\newglossaryentry{Repository}	{name=Repository,description={engl. Lager, Depot - Repositorium enthält die Geschichte eines Projekts. Jeder Nutzer hat ein eigenes Repository mit der gesamten Geschichte}}
+\newglossaryentry{Clone} 		{name=Clone		,description={engl. kopieren - Ein entferntes Repository wird auf einen lokalen Rechner übertragen}}
+\newglossaryentry{Branch}		{name=Branch	,description={engl. Zweig - Ein Branch ist ein Entwicklungszweig in der Geschichte}}
+\newglossaryentry{Switch}		{name=Switch	,description={engl. wechseln - Switch ermöglicht das Wechseln auf einen anderen Branch (arbeitet man z.B. auf einem seperaten Branch, könnte man mit Switch zurück zum Master Branch wechseln)}}
+\newglossaryentry{pull}			{name=Pull		,description={engl. ziehen - Pull lädt alle Änderungen vom externen Repository}}
+\newglossaryentry{commit}		{name=Commit	,description={engl. übergeben - Mit diesem Befehl werden lokale Änderungen im lokalen Repository gespeichert}}
+\newglossaryentry{Changeset}		{name=Changeset	,description={In einem Changeset werden mehrere Änderungen zu einer Einheit zusammengefasst}}
+\newglossaryentry{push}		{name=Push		,description={engl. anschieben - Dieser Befehl überträgt die lokalen Änderungen auf den Server}}
 %-------------------------------------------------------------------------------------
 
 \begin{document}
@@ -112,17 +110,17 @@ Außerdem bietet Git ein Webinterface.
 
 \subsection{Use-Case-Modell}
 
-\includegraphics[width=\textwidth]{Use-Case-Modell.png}	
+\includegraphics[width=15cm]{Use-Case-Modell.png}	
 
 Dieses Use-Cases repräsentieren die Interaktion zwischen dem Programmierer (\textit{Aktor}) und dem Git-System (\textit{Subjekt})\\  							% Textit = Textitalian = kursiv
 \\ 														% Absatz
 Der Programmierer benutzt das Git-System um ein bestimmtes Ziel zu erreichen. 
-Der Git-Server (\textit{Sekundäre Aktor}) wird von dem Git-System genutzt um eine Auswahl von Befehlen ausführen zu können.\\
+Der Git-Server (\textit{Sekundäre Aktor}) wird genutzt um mit den lokalen GIT Instanzen synchronisiert zu werden.\\
 \\
 Der Programmierer repräsentiert eine Personengruppe. An einem Projekt können beliebig viele Programmierer beteiligt seien.  
 Der Admin erbt alle Fähigkeiten von dem Programmierer. Demnach kann der Admin auch alle anderen Interaktionen ausüben.  \\
 \\
-Im Use-Case sind die Möglichkeiten, Verwalte Repository, Verwalte Rechte, \gls{Clone} Repository, Bearbeite Quellecode, Erstelle Branch, Merge Branch und \gls{Switch} Branch aufgeführt. \\
+Im Use-Case sind die Möglichkeiten, verwalte Repository, \gls{Clone} Repository, bearbeite Quellcode, erstelle Branch, Merge Branch und \gls{Switch} Branch aufgeführt.\\\\Optional besteht die Möglichkeit für den Admin die Rechte mit Hilfe der Betriebssystemverwaltung über ein Skript in GIT zu integrieren.\\
 \\
 Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien. 
 
@@ -151,16 +149,16 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Erweiterungen:}\\\\
-\qquad \qquad (1.-4.)b. & Der Nutzer bricht den Vorgang ab.\\
-\qquad \qquad (1.-4.)b.1. & Das Use-Case endet erfolglos.\\
+\qquad \qquad (1.-4.)a. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-4.)a.1. & Das Use-Case endet erfolglos.\\
 \\
-\qquad \qquad 2.a. & Die Verbindung zum Server kann nicht hergestellt werden. \\
-\qquad \qquad 2.a.1. & Das System informiert den Nutzer. \\
-\qquad \qquad 2.a.2. & Das Use Case endet erfolglos. \\
+\qquad \qquad 2||b. & Die Verbindung zum Server kann nicht hergestellt werden: \\
+\qquad \qquad 2||b.1. & Das System informiert den Nutzer. \\
+\qquad \qquad 2||b.2. & Das Use Case endet erfolglos. \\
 \\
-\qquad \qquad 3.a. & Die Verbindung bricht während der Übertragung ab. \\
-\qquad \qquad 3.a.1. & Das System informiert den Nutzer. \\
-\qquad \qquad 3.a.2. & Das Use Case endet erfolglos. \\\\
+\qquad \qquad 3||b. & Die Verbindung bricht während der Übertragung ab: \\
+\qquad \qquad 3||b.1. & Das System informiert den Nutzer. \\
+\qquad \qquad 3||b.2. & Das Use Case endet erfolglos. \\\\
 
 \end{tabularx}
 
@@ -196,25 +194,25 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Erweiterungen:}\\\\
-\qquad \qquad (1.-13.)b. & Der Nutzer bricht den Vorgang ab.\\
-\qquad \qquad (1.-13.)b.1. & Das Use-Case endet erfolglos.\\
+\qquad \qquad (1.-13.)a. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-13.)a.1. & Das Use-Case endet erfolglos.\\
 \\
-\qquad \qquad 2.a. & Die Verbindung zum Server kann nicht hergestellt werden. \\
-\qquad \qquad 2.a.1. & Das System informiert den Nutzer. \\
-\qquad \qquad 2.a.2. & Das Use Case endet erfolglos. \\
+\qquad \qquad 2||b. & Die Verbindung zum Server kann nicht hergestellt werden: \\
+\qquad \qquad 2||b.1. & Das System informiert den Nutzer. \\
+\qquad \qquad 2||b.2. & Das Use Case endet erfolglos. \\
 
 \\
-\qquad \qquad 4.a. & Das System stellt Überschneidungen fest.\\
-\qquad \qquad 4.a.1. & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
-\qquad \qquad 4.a.2. & Fortsetzung bei 5.\\
+\qquad \qquad 4.b. & Das System stellt Überschneidungen fest.\\
+\qquad \qquad 4.b.1. & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
+\qquad \qquad 4.b.2. & Fortsetzung bei 5.\\
 \\
-\qquad \qquad 11.a. & Die Verbindung zum Server kann nicht hergestellt werden. \\
-\qquad \qquad 11.a.1 & Das System informiert den Nutzer. \\
-\qquad \qquad 11.a.2. & Das Use Case endet erfolglos. \\
+\qquad \qquad 11||b. & Die Verbindung zum Server kann nicht hergestellt werden: \\
+\qquad \qquad 11||b.1 & Das System informiert den Nutzer. \\
+\qquad \qquad 11||b.2. & Das Use Case endet erfolglos. \\
 \\
-\qquad \qquad 12.a. & Das System stellt Überschneidungen fest.\\
-\qquad \qquad 12.a.1. & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
-\qquad \qquad 12.a.2. & Fortsetzung bei 13.\\
+\qquad \qquad 12.b. & Das System stellt Überschneidungen fest.\\
+\qquad \qquad 12.b.1. & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
+\qquad \qquad 12.b.2. & Fortsetzung bei 13.\\
 \end{tabularx}
 
 \newpage
@@ -238,12 +236,12 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Erweiterungen:}\\\\
-\qquad \qquad 1.a. & Das System stellt fest das dieser Name schon vergeben ist.\\
-\qquad \qquad 1.a.1. & Das System fordert den Nutzer auf einen anderen Namen zu wählen.\\
-\qquad \qquad 1.a.2. & Der Nutzer gibt einen noch nicht vergebenen Namen ein.\\
-\qquad \qquad 1.a.3. & Fortsetzung bei 2.\\\\
-\qquad \qquad (1.-2.)b. & Der Nutzer bricht den Vorgang ab.\\
-\qquad \qquad (1.-2.)b.1. & Das Use-Case endet erfolglos.\\\\\hline\hline\\
+\qquad \qquad 1.b. & Das System stellt fest, dass dieser Name schon vergeben ist.\\
+\qquad \qquad 1.b.1. & Das System fordert den Nutzer auf einen anderen Namen zu wählen.\\
+\qquad \qquad 1.b.2. & Der Nutzer gibt einen noch nicht vergebenen Namen ein.\\
+\qquad \qquad 1.b.3. & Fortsetzung bei 2.\\\\
+\qquad \qquad (1.-2.)a. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-2.)a.1. & Das Use-Case endet erfolglos.\\\\\hline\hline\\
 \end{tabularx}
 
 
@@ -265,11 +263,11 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Erweiterungen:}\\\\
-\qquad \qquad 1.a. & Das System stellt Überschneidungen fest.\\
-\qquad \qquad 1.a.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
-\qquad \qquad 1.a.2 & Fortsetzung bei 2.\\\\
-\qquad \qquad (1.-2.)b. & Der Nutzer bricht den Vorgang ab.\\
-\qquad \qquad (1.-2.)b.1. & Das Use-Case endet erfolglos.\\\\
+\qquad \qquad 1.b. & Das System stellt Überschneidungen fest.\\
+\qquad \qquad 1.b.1 & Der Nutzer wird aufgefordert die zu übernehmenden Änderungen auszuwählen.\\
+\qquad \qquad 1.b.2 & Fortsetzung bei 2.\\\\
+\qquad \qquad (1.-2.)a. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-2.)a.1. & Das Use-Case endet erfolglos.\\\\
 
 \end{tabularx}
 \newpage
@@ -314,43 +312,11 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 
 \begin{tabularx}{\textwidth}{lX}
 \textbf{Erweiterungen:}\\\\
-\qquad \qquad 2.a. & Das System kann keine Verbindung zum Git-Server herstellen.\\
-\qquad \qquad 2.a.1. & Das Use-Case endet erfolglos\\\\
-\qquad \qquad (1.-2.)b. & Der Nutzer bricht den Vorgang ab.\\
-\qquad \qquad (1.-2.)b.1. & Das Use-Case endet erfolglos.\\\\
+\qquad \qquad 2||b. & Das System kann keine Verbindung zum Git-Server herstellen.\\
+\qquad \qquad 2||b.1. & Das Use-Case endet erfolglos\\\\
+\qquad \qquad (1.-2.)a. & Der Nutzer bricht den Vorgang ab.\\
+\qquad \qquad (1.-2.)a.1. & Das Use-Case endet erfolglos.\\\\
 \end{tabularx}
-\newpage
-\begin{tabularx}{\textwidth}{lX}
-\textbf{Use Case:} & Rechte verwalten\\
-\textbf{Kurzbeschreibung:} & Der Admin kann Leserechte und Ausführrechte für bestimmte Nutzergruppen verteilen.\\
-\textbf{Vorbedingung:} & Es muss mindestens eine Gruppe bestehen. \\
-\textbf{Primärer Aktor:} & Admin\\
-\textbf{Nachbedingung:} & Die Rechte wurden geändert. \\
-\textbf{Erfolgsszenario:} & 
-\end{tabularx}
-
-\begin{tabularx}{\textwidth}{lX}
-\\
-\qquad 1. & Der Admin gibt das Kommando zum Verwalten von Rechten in die Shell ein mit dem Namen der zu verwaltenden Gruppe.\\
-\qquad 2. & Das System listet die Rechte der ausgewählten Gruppe. \\
-\qquad 3. & Der Admin gibt entsprechende Kommandos zum Verwalten der Rechte ein. \\
-\qquad 4. & Das System informiert den Admin über eine erfolgreiche Ausführung der Aktion.\\
-\qquad 5. & Das Use Case endet erfolgreich.\\\\\hline
-\end{tabularx}
-
-\begin{tabularx}{\textwidth}{lX}
-\textbf{Erweiterungen:}\\\\
-\qquad \qquad 1.a. & Das System kann keine Verbindung zum Git-Server herstellen.\\
-\qquad \qquad 1.a.1 & Das Use-Case endet erfolglos.\\\\
-
-\qquad \qquad (1.-2.)b. & Der Nutzer bricht den Vorgang ab.\\
-\qquad \qquad (1.-2.)b.1. & Das Use-Case endet erfolglos.\\\\
-
-\end{tabularx}
-
-\newpage	
-
-
 
 \newpage	
 \subsection{Domänenmodell}
@@ -358,7 +324,7 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \includegraphics[width=\textwidth]{Domaenenmodell.jpg}\\
 Die Abbildung stellt das Domänenmodell der Software GIT dar.\\\\
 
-Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe \hyperlink{target}{Clone Repository} - Zustandsdiagramme). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele \gls{Changeset}s. Jeder Branch enthält einen \gls{Pointer} (\gls{Head}) welcher auf das letzte in diesem Branch erzeugte Changeset zeigt. Die Changesets zeigen mittels eines Pointers auf das jeweilige Changeset welches zuvor erzeugt wurde. Durch diese listenartige Verkettung entsteht die History. Durch die Verschiebung des Heads besteht die Möglichkeit vorgenommene Änderungen wieder rückgängig zu machen. Jedes Changeset beinhaltet mindestens eine Modifikation. Eine Modifikation ist eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. 
+Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe \hyperlink{target}{Clone Repository} - Zustandsdiagramme). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele \gls{Changeset}s. Branches und Changesets sind Knoten. Changesets benötigen immer einen Vorgängerknoten somit gilt, dass ein Branch immer zuerst existieren muss. Auf einen Knoten können beliebig viele Branches folgen. Branches verzweigen also die History. Jedes Changeset beinhaltet mindestens eine Modifikation. Es gibt mehrere Arten von Modifikationen. Eine FileModification beschreibt eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. Außerdem können Dateien erzeugt oder gelöscht werden. Wenn ein File verschoben wird, entspricht das intern der Löschung und Neuerzeugung des Files.
 
 \newpage		
 \subsection{Ausgewählte Zustandsdiagramme} \label{sec:zustandsd}
@@ -384,8 +350,7 @@ Bei erfolgreicher Anmeldung wird das Repository lokal auf dem Computer gespeiche
 Alternative kann auch ein lokales leeres Repository initialisiert werden.\\\\\\
 \underline{\textbf{\textsc{Pull}}}\\
 \includegraphics[width=\textwidth]{Pull.jpg}\\\\
-Vom Nutzer gewählter Zeitpunkt" vielleicht besser "Pullstartvorgang"
-Zu jedem vom Nutzer gewählten Zeitraum hat er die Möglichkeit, sein lokales Repository mit dem externen Repository abzugleichen. \\
+Zu jedem vom Nutzer gewählten Zeitpunkt hat er die Möglichkeit, sein lokales Repository mit dem externen Repository abzugleichen. \\
 Dafür wählt er die Option Pull, die alle seit dem letzten Abgleich veränderten Daten übernimmt.
 Ein Konflikt tritt auf, wenn Änderungen an der gleichen Stelle vorgenommen wurden.
 Der Nutzer muss dann den Konflikt lösen in dem er dem Programm sagt welche Änderung übernommen werden soll.
@@ -400,13 +365,13 @@ Der Nutzer muss dann den Konflikt lösen in dem er dem Programm sagt welche Änd
 \newpage		
 \section{\underline{Erfahrung aus der Teamarbeit}}
 
-Git hat uns beste Möglichkeiten geboten gemeinsam an dem Projekt zu arbeiten.
-Die Versionsverwaltung und das Austauschen der Daten ermöglichten uns auch in Zweiergruppen an den einzelnen Teilen zu arbeiten. Das gemeinschaftliche Zusammenfügen der Daten lief dann problemlos. Allerdings ist auch nicht zu vernachlässigen, dass wir das Git-System bis an die Grenzen betrieben haben und es zu dem ein oder anderen Konflikt mit der Software kam. Alles in allem lässt sich die Teamarbeit als erfolgreich betrachten. Auch wenn es nicht immer einfach war ein gemeinsames Treffen zu koordinieren. 
+Zu Beginn unseres Projektes haben wir uns dazu entschieden GIT für die Versionsverwaltung und den Austausch zu nutzen. Da die üblichen Textverwaltungsprogramme ihren Inhalt nicht als Klartext speichern, welches eine Voraussetzung für GIT ist, haben wir uns dazu entschieden LaTeX zu nutzen. Somit hat uns GIT beste Möglichkeiten geboten gemeinsam an dem Projekt zu arbeiten. Die Versionsverwaltung und das Austauschen der Daten ermöglichten uns auch in Zweiergruppen an den einzelnen Punkten zu arbeiten. Das gemeinschaftliche Zusammenfügen der Daten lief nicht immer problemlos, somit hatten wir die Möglichkeit uns intensiv mit der Software auseinander zu setzen. Wie bereits aus anderen Gruppenarbeiten zu erwarten lief die Teamarbeit problemlos ab. 
+Die Teamarbeit lässt sich alles in allem als erfolgreich betrachten. Auch wenn es nicht immer einfach war ein gemeinsames Treffen zu koordinieren. 
 \\\\
 
 \section{\underline{Schlussbetrachtung}}
 	
-Zusammenfassend lässt sich sagen, dass diese Projektarbeit eine gute Möglichkeit war sich mit Git und mit den Werkzeugen des Software Engineerings auseinander zu setzen. Es ist allerdings zu bedenken, dass man eine gewisse Einbearbeitungszeit benötigt um mit Git umgehen zu können. Des Weiteren haben wir dieses Projekt dazu genutzt uns mit Latex näher zu beschäftigen. Es hat uns fasziniert die Möglichkeiten von Latex zu entdecken, auch wenn es hier und da einige Probleme gab. \\
+Zusammenfassend lässt sich sagen, dass diese Projektarbeit eine gute Möglichkeit war sich mit GIT und mit den Werkzeugen des Software Engineerings auseinander zu setzen. Es ist allerdings zu bedenken, dass man eine gewisse Einbearbeitungszeit benötigt um mit GIT umgehen zu können. Des Weiteren haben wir dieses Projekt dazu genutzt uns mit Latex näher zu beschäftigen. Es hat uns fasziniert die Möglichkeiten von Latex zu entdecken, auch wenn es hier und da einige Probleme gab.\\
 
 \end{document}
 
