@@ -78,7 +78,7 @@
 
 Git ist ein freies Versionsverwaltungssystem, dass von Linus Torvald entwickelt wurde.
 (Das zu der Zeit existierende Versionsverwaltungssystem BitKeeper war aus Lizenzgründen nicht mehr für das Linuxentwicklerteam zugänglich, und so entschied sich Torvald dafür, ein eigenes System zu schreiben.) \\
-Ein Versionsverwaltungssystem verfolgt Änderungen in Dokumenten oder Dateien und speichert die durch die Änderungen entstehenden Versionen in einem Verzeichnis so ab, dass sie mit einem Zeitstempel und einer Benuzerkennung versehen werden und später wieder hergestellt werden können. Git bietet weiterhin die Möglichkeit sich eigene \gls{Branch}es zu erstellen, so dass man unabhängig vom "Hauptstrang" arbeiten kann, um so zum Beispiel Portierungen einer Applikation auf andere Betriebssysteme zu entwickeln. \\
+Ein Versionsverwaltungssystem verfolgt Änderungen in Dokumenten oder Dateien und speichert die durch die Änderungen entstehenden Versionen in einem Verzeichnis so ab, dass sie mit einem Zeitstempel und einer Benuzerkennung versehen werden und später wieder hergestellt werden können. Git bietet weiterhin die Möglichkeit sich eigene \gls{Branch}es zu erstellen, so dass man unabhängig vom "Hauptstrang" arbeiten kann, ohne in Gefahr zu laufen, wichtige Teile des Codes unbeabsichtlich zu zerstören, um so zum Beispiel Portierungen einer Applikation auf andere Betriebssysteme zu entwickeln. \\
 Git speichert außerdem alle Dateien lokal, so dass auch ohne Internetverbindung gearbeitet werden kann, die Zusammenführung (\gls{merge}) der Branches muss dann zu einem späteren Zeitpunkt stattfinden. Jeder Benutzer verfügt also über eine komplette Kopie des \gls{Repository}. \\
 Die Speicherung der Versionsgeschichte erfolgt so, dass der Name einer beliebigen Revision auf der vollständigen Geschichte basiert, die zu dieser Version geführt hat, so dass es nicht möglich ist, die Versionsgeschichte nachträglich zu ändern. Diese Funktion ermöglicht auch, bestimmte Versionen gesondert digital zu signieren, um z.B. den Zustand zum Zeitpunkt des Erscheinens einer neuen Version besonders zu kennzeichnen. \\
 Ein weiterer Vorteil von Git ist zudem eine große Vielfalt von Möglichkeiten zum Austausch zwischen Repositories; Git unterstützt eine Vielzahl von Protokollen zum Dateiaustausch, darunter auch ein eigenes, sehr effizientes (git://).\\
@@ -345,7 +345,7 @@ Wenn der Nutzer nun weitere Änderung vornimmt, hat er die Möglichkeit die vorh
 \underline{\textbf{\textsc{\hypertarget{target}{Clone Repository}}}} \\
 \includegraphics[width=\textwidth]{Clone.jpg}\\\\
 Zu Beginn eines Projektes kann der Anwender ein existierendes Repository zu seinem Projekt hinzufügen.
-Dafür benötigt er die genau Web-Adresse eines bereits existierenden Repositorys. Diese wird dann vom System validiert. Bei Falscher Eingabe gibt es eine Fehlermeldung und der Nutzer gelangt zurück in das Abfragemenü.
+Dafür benötigt er die genaue Web-Adresse eines bereits existierenden Repositorys. Diese wird dann vom System validiert. Bei falscher Eingabe gibt es eine Fehlermeldung und der Nutzer gelangt zurück in das Abfragemenü.
 Bei erfolgreicher Anmeldung wird das Repository lokal auf dem Computer gespeichert. \\\\
 Alternative kann auch ein lokales leeres Repository initialisiert werden.\\\\\\
 \underline{\textbf{\textsc{Pull}}}\\
