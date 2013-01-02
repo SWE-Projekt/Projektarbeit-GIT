@@ -110,7 +110,7 @@ Außerdem bietet Git ein Webinterface.
 
 \subsection{Use-Case-Modell}
 
-\includegraphics[width=15cm]{Use-Case-Modell.png}	
+\includegraphics[width=15cm]{Use-Case-Modell.pdf}	
 
 Dieses Use-Cases repräsentieren die Interaktion zwischen dem Programmierer (\textit{Aktor}) und dem Git-System (\textit{Subjekt})\\  							% Textit = Textitalian = kursiv
 \\ 														% Absatz
@@ -321,7 +321,7 @@ Eine detaillierte Beschreibung der Abläufe folgt in den Use-Case-Szenarien.
 \newpage	
 \subsection{Domänenmodell}
 
-\includegraphics[width=\textwidth]{Domaenenmodell.jpg}\\
+\includegraphics[width=\textwidth]{Domaenenmodell.pdf}\\
 Die Abbildung stellt das Domänenmodell der Software GIT dar.\\\\
 
 Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf einem Server existieren, von dem beliebig viele lokale Repositories geklont werden können (siehe \hyperlink{target}{Clone Repository} - Zustandsdiagramme). Zu jedem Repository gehören mindestens ein oder mehrere Branches und beliebig viele \gls{Changeset}s. Branches und Changesets sind Knoten. Changesets benötigen immer einen Vorgängerknoten somit gilt, dass ein Branch immer zuerst existieren muss. Auf einen Knoten können beliebig viele Branches folgen. Branches verzweigen also die History. Jedes Changeset beinhaltet mindestens eine Modifikation. Es gibt mehrere Arten von Modifikationen. Eine FileModification beschreibt eine zusammenhängende Textpassage (durch die Offsets definiert) in einer Datei die geändert wurde. Außerdem können Dateien erzeugt oder gelöscht werden. Wenn ein File verschoben wird, entspricht das intern der Löschung und Neuerzeugung des Files.
@@ -334,7 +334,7 @@ Das Repository ist die Hauptklasse unseres Modells. Es kann ein Repository auf e
 	Da die Lebenszyklen der Objekte in Git komplex sind wurde hier ausgewählte Zustandsdiagramme dargestellt. \\
 
 \underline{\textbf{\textsc{Push und Commit}}} \\
-\includegraphics[width=\textwidth]{PuCo.jpg}\\\\
+\includegraphics[width=\textwidth]{PuCo.pdf}\\\\
 Die Möglichkeit zu commiten gibt es nur, wenn Änderungen vorliegen. Ansonsten wird eine Fehlermeldung ausgegeben, die den Nutzer darauf aufmerksam macht, dass es nichts zu commiten gibt.
 Wurden Dateien oder Dokumente verändert, wird im SmartGit Fenster angezeigt, welche Dateien verändert wurden.\\
 Der Nutzer hat in jedem Zustand die Möglichkeit, den Push-Button zu betätigen, allerdings mit unterschiedlichem Effekt:\\
@@ -343,13 +343,13 @@ Es gibt nun den Fall, dass Änderungen vorgenommen und committed wurden, ohne da
 Wenn der Nutzer nun weitere Änderung vornimmt, hat er die Möglichkeit die vorhergegangenen Änderungen auf den Server zu pushen, ohne dass die aktuellen Änderungen mit übernommen werden. 
 \newpage	
 \underline{\textbf{\textsc{\hypertarget{target}{Clone Repository}}}} \\
-\includegraphics[width=\textwidth]{Clone.jpg}\\\\
+\includegraphics[width=\textwidth]{Clone.pdf}\\\\
 Zu Beginn eines Projektes kann der Anwender ein existierendes Repository zu seinem Projekt hinzufügen.
 Dafür benötigt er die genaue Web-Adresse eines bereits existierenden Repositorys. Diese wird dann vom System validiert. Bei falscher Eingabe gibt es eine Fehlermeldung und der Nutzer gelangt zurück in das Abfragemenü.
 Bei erfolgreicher Anmeldung wird das Repository lokal auf dem Computer gespeichert. \\\\
 Alternative kann auch ein lokales leeres Repository initialisiert werden.\\\\\\
 \underline{\textbf{\textsc{Pull}}}\\
-\includegraphics[width=\textwidth]{Pull.jpg}\\\\
+\includegraphics[width=\textwidth]{Pull.pdf}\\\\
 Zu jedem vom Nutzer gewählten Zeitpunkt hat er die Möglichkeit, sein lokales Repository mit dem externen Repository abzugleichen. \\
 Dafür wählt er die Option Pull, die alle seit dem letzten Abgleich veränderten Daten übernimmt.
 Ein Konflikt tritt auf, wenn Änderungen an der gleichen Stelle vorgenommen wurden.
